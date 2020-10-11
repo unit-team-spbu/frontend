@@ -1,3 +1,3 @@
-# Project Title 
+# Описание
 
-Place there all basic information needed for anyone to get started with your repository
+Web-клиент для приложения, написанный на React
