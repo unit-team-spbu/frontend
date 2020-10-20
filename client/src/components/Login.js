@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     height: '100vh',
   },
   image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
+    backgroundImage: 'url(https://source.unsplash.com/random/?programming,it)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -100,7 +100,7 @@ const Login = ({onSigninSubmit, email, onEmailChange, password, onPasswordChahge
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="Signup" variant="body2">
                   "Нет учетной записи? Регистрация"
                 </Link>
               </Grid>
