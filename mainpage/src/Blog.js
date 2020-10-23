@@ -22,29 +22,44 @@ const events = [
     short_info: "24 октября 9:30",
   },
   {
-    title: "Directum Day 2020",
+    title: "Кейс-чемпионат",
     image_url: "https://izhlife.ru/uploads/posts/newsimg/imgs-1523947921.jpg",
     short_info: "24 октября 18:00",
   },
   {
-    title: "Directum Day 2020",
+    title: "QA online meetup",
     image_url: "https://izhlife.ru/uploads/posts/newsimg/imgs-1523947921.jpg",
     short_info: "25 октября 16:30",
   },
   {
-    title: "Directum Day 2020",
+    title: "Стажировка",
     image_url: "https://izhlife.ru/uploads/posts/newsimg/imgs-1523947921.jpg",
     short_info: "26 октября 9:30",
   },
   {
-    title: "Directum Day 2020",
+    title: "DevOps тренинг",
     image_url: "https://izhlife.ru/uploads/posts/newsimg/imgs-1523947921.jpg",
-    short_info: "26 октября 9:30",
+    short_info: "26 октября 15:00",
+  },
+  {
+    title: "Big Data Days 2020",
+    image_url: "https://izhlife.ru/uploads/posts/newsimg/imgs-1523947921.jpg",
+    short_info: "27 октября 10:00",
   },
   {
     title: "Directum Day 2020",
     image_url: "https://izhlife.ru/uploads/posts/newsimg/imgs-1523947921.jpg",
-    short_info: "26 октября 9:30",
+    short_info: "27 октября 16:00",
+  },
+  {
+    title: "Directum Day 2020",
+    image_url: "https://izhlife.ru/uploads/posts/newsimg/imgs-1523947921.jpg",
+    short_info: "28 октября 18:30",
+  },
+  {
+    title: "Directum Day 2020",
+    image_url: "https://izhlife.ru/uploads/posts/newsimg/imgs-1523947921.jpg",
+    short_info: "28 октября 19:30",
   },
 ];
 

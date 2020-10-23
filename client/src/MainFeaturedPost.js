@@ -7,6 +7,9 @@ import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import GradeRoundedIcon from '@material-ui/icons/GradeRounded';
 
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
     position: 'relative',
@@ -66,9 +69,11 @@ export default function MainFeaturedPost(props) {
         </Grid>
         <Grid item md={6} className={classes.buttonsSide}>
           <div className={classes.buttonsSide}>
-            <IconButton>
-              <GradeRoundedIcon fontSize="large" color="secondary"  />
-            </IconButton>
+           
+          <FormControlLabel
+        control={<Checkbox  icon={<GradeRoundedIcon />} checkedIcon={<GradeRoundedIcon />} name="checkedH" size="large" />}
+         />
+            
           </div>
         </Grid>
       </Grid>

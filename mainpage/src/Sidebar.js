@@ -48,12 +48,88 @@ export default function Sidebar(props) {
   return (
     <Grid item xs={12} md={12}>
       <Paper elevation={4} className={classes.sidebarAboutBox}>
-
-              <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate>
         <Grid container spacing={0}>
         <Grid item xs={12} sm={12}>
         <Typography align="left" component="h1" variant="h6">
-        1) Вид мероприятия
+        Формат мероприятия
+        </Typography>
+        </Grid>
+        
+        <Grid item xs={12} sm={12}>
+        <FormControlLabel
+        control={<Checkbox value="hak" size="small" color="secondary" />}
+        label="Очное"
+        />
+        </Grid>
+
+        <Grid item xs={12} sm={12}>
+        <FormControlLabel
+        control={<Checkbox value="hak" size="small" color="secondary" />}
+        label="Дистанционное"
+        />
+        </Grid>
+
+        </Grid>
+        </form>
+        
+        
+        <form className={classes.form} noValidate>
+        <Grid container spacing={0}>
+        <Grid item xs={12} sm={12}>
+        <Typography align="left" component="h1" variant="h6">
+        Цена
+        </Typography>
+        </Grid>
+        
+        <Grid item xs={12} sm={12}>
+        <FormControlLabel
+        control={<Checkbox value="hak" size="small" color="secondary" />}
+        label="Бесплатные"
+        />
+        </Grid>
+
+        <Grid item xs={12} sm={12}>
+        <FormControlLabel
+        control={<Checkbox value="hak" size="small" color="secondary" />}
+        label="Платные"
+        />
+        </Grid>
+
+        </Grid>
+        </form>
+        
+
+        <form className={classes.form} noValidate>
+        <Grid container spacing={0}>
+        <Grid item xs={12} sm={12}>
+        <Typography align="left" component="h1" variant="h6">
+        Город
+        </Typography>
+        </Grid>
+        
+        <Grid item xs={12} sm={12}>
+        <FormControlLabel
+        control={<Checkbox value="hak" size="small" color="secondary" />}
+        label="Санкт-Петербург"
+        />
+        </Grid>
+
+        <Grid item xs={12} sm={12}>
+        <FormControlLabel
+        control={<Checkbox value="hak" size="small" color="secondary" />}
+        label="Москва"
+        />
+        </Grid>
+
+        </Grid>
+        </form>
+
+        <form className={classes.form} noValidate>
+        <Grid container spacing={0}>
+        <Grid item xs={12} sm={12}>
+        <Typography align="left" component="h1" variant="h6">
+        Вид мероприятия
         </Typography>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -114,9 +190,50 @@ export default function Sidebar(props) {
         </form>
 
 
+        <form className={classes.form} noValidate>
+        <Grid container spacing={0}>
+        <Grid item xs={12} sm={12}>
+        <Typography align="left" component="h1" variant="h6">
+        Когда
+        </Typography>
+        </Grid>
+        
+        <Grid item xs={12} sm={12}>
+        <FormControlLabel
+        control={<Checkbox value="hak" size="small" color="secondary" />}
+        label="Сегодня"
+        />
+        </Grid>
+
+        <Grid item xs={12} sm={12}>
+        <FormControlLabel
+        control={<Checkbox value="hak" size="small" color="secondary" />}
+        label="Завтра"
+        />
+        </Grid>
+
+        <Grid item xs={12} sm={12}>
+        <FormControlLabel
+        control={<Checkbox value="hak" size="small" color="secondary" />}
+        label="На этой недели"
+        />
+        </Grid>
+
+        <Grid item xs={12} sm={12}>
+        <FormControlLabel
+        control={<Checkbox value="hak" size="small" color="secondary" />}
+        label="В этом месяце"
+        />
+        </Grid>
+        </Grid>
+        </form>
+
 
       <div className={classes.buttonsSide}>
+      <Typography
+          align="left">
         <Button variant="contained" color="secondary" >Применить</Button>
+      </Typography>
       </div>
      
      </Paper>  

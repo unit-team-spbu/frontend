@@ -17,6 +17,9 @@ import IconButton from '@material-ui/core/IconButton';
 import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
 import ThumbDownAltOutlinedIcon from '@material-ui/icons/ThumbDownAltOutlined';
 
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+
 const useStyles = makeStyles((theme) => ({
   sidebarAboutBox: {
     padding: theme.spacing(2),
@@ -78,13 +81,16 @@ export default function Sidebar(props) {
       </List>
       <div className={classes.buttonsSide}>
         <Button variant="contained" color="secondary" >Зарегистрироваться</Button>
-        <IconButton>
-          <ThumbUpAltOutlinedIcon />
-        </IconButton>
-        <IconButton>
-          <ThumbDownAltOutlinedIcon />
-        </IconButton>
+        
+        <FormControlLabel
+        control={<Checkbox icon={<ThumbUpAltOutlinedIcon />} checkedIcon={<ThumbUpAltOutlinedIcon />} name="checkedH" />}
+      />
+        
+        <FormControlLabel
+        control={<Checkbox icon={<ThumbDownAltOutlinedIcon />} checkedIcon={<ThumbDownAltOutlinedIcon />} name="checkedH" />}
+      />
         </div>
+
       </Paper>  
     </Grid>
   );
