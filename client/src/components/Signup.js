@@ -46,11 +46,11 @@ export default function SignUp() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Регистрация
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={5}>
               <TextField
                 autoComplete="fname"
                 name="firstName"
@@ -58,17 +58,17 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="firstName"
-                label="First Name"
+                label="Ваше имя"
                 autoFocus
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={7}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
                 id="lastName"
-                label="Last Name"
+                label="Ваша фамилия"
                 name="lastName"
                 autoComplete="lname"
               />
@@ -79,7 +79,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="Электронная почта"
                 name="email"
                 autoComplete="email"
               />
@@ -90,7 +90,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="Пароль"
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -99,7 +99,7 @@ export default function SignUp() {
             <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+                label="Я хочу получать различные предложения и уведомления по электронной почте."
               />
             </Grid>
           </Grid>
@@ -108,14 +108,15 @@ export default function SignUp() {
             fullWidth
             variant="contained"
             color="primary"
+            href="Anketa"
             className={classes.submit}
           >
-            Sign Up
+            Начать
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="welcome" variant="body2">
-                Already have an account? Sign in
+                "Уже зарегестрированы? Войти"
               </Link>
             </Grid>
           </Grid>
