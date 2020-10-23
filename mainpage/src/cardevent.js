@@ -18,7 +18,7 @@ import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 250,
+    maxWidth: 280,
     height: 300,
 
   },

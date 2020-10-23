@@ -49,7 +49,7 @@ export default function Header(props) {
           component="h2"
           variant="h5"
           color="inherit"
-          align="center"
+          align="right"
           noWrap
           className={classes.toolbarTitle}
         >
