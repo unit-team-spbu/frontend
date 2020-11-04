@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 //import Navbar from './NavBar';
 import WelcomePage from './WelcomePage';
-import Signup from './Signup';
+import SignUp from './Signup';
 import Anketa from './Anketa';
 import lenta from './lenta/src/index';
 import event from './event/src/index';
@@ -13,7 +13,7 @@ function App() {
     <Router>
       <Switch>
         <Route path='/welcome' component={WelcomePage}/>
-        <Route path='/Signup' component={Signup} />
+        <Route path='/Signup' component={SignUp} />
         <Route path='/Anketa' component={Anketa} />
 
         <Route path='/lenta' component={lenta} />

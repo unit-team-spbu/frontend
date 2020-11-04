@@ -1,13 +1,11 @@
 import React from 'react';
+import SignUp from './Signup';
 
-import Login from './Login';
-
-
-class WelcomePage extends React.Component {
-  state ={
-    email: '',
-    password: ''
-  }
+class registration extends React.Component {
+    state ={
+        email: '',
+        password: ''
+      }
   onEmailChange = (e) =>{
     this.setState({
         email: e.target.value
@@ -18,14 +16,14 @@ class WelcomePage extends React.Component {
       password: e.target.value
     })
   }
-  onSigninSubmit = (e) =>{
+  onSignupSubmit = (e) =>{
     e.preventDefault();
-    console.log('email: ' + this.state.email + ', password: ' + this.state.password);
+   console.log('email: ' + this.state.email + ', password: ' + this.state.password);
   }
   render() {
     return(
-      <Login
-        onSigninSubmit={this.onSigninSubmit} 
+      <SignUp
+        onSignupSubmit={this.onSignupSubmit} 
         onEmailChange={this.onEmailChange}
         email={this.state.email}
         password={this.state.password}
@@ -35,4 +33,4 @@ class WelcomePage extends React.Component {
   }
 }
 
-export default WelcomePage;
+export default registration;

@@ -12,6 +12,8 @@ import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
+import auth from './action/auth';
+import {useDispatch} from "react-redux"
 
 import Copyright from './Copyright';
 
@@ -43,8 +45,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Login = ({onSigninSubmit, email, onEmailChange, password, onPasswordChahge}) => {
+const Login = ({onSigninSubmit, email, onEmailChange, password, onPasswordChange}) => {
   const classes = useStyles();
+  const dispatch=useDispatch();
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -83,7 +86,7 @@ const Login = ({onSigninSubmit, email, onEmailChange, password, onPasswordChahge
               id="password"
               autoComplete="current-password"
               value={password}
-              onChange={onPasswordChahge}
+              onChange={onPasswordChange}
             />
             <Button
               type="submit"
@@ -92,6 +95,7 @@ const Login = ({onSigninSubmit, email, onEmailChange, password, onPasswordChahge
               color="primary"
               className={classes.submit}
               href="lenta"
+              onClick={() => dispatch(auth(email,password))}
             >
               Войти
             </Button>

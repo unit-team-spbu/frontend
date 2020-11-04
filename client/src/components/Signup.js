@@ -12,8 +12,11 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useState, useEffect } from 'react';import Input from "../"
 
 import Copyright from './Copyright';
+import registr from './action/user';
+import { PinDropSharp, SettingsSystemDaydreamOutlined } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -35,8 +38,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+const SignUp = ({onSignupSubmit, email, onEmailChange, password, onPasswordChange}) => {
   const classes = useStyles();
+  //const [email,setEmail]=useState("")
+  //const [password,setPassword]=useState("")
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -48,7 +54,7 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Регистрация
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={onSignupSubmit} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={5}>
               <TextField
@@ -82,6 +88,10 @@ export default function SignUp() {
                 label="Электронная почта"
                 name="email"
                 autoComplete="email"
+                value={email}
+                //setValue={setEmail}
+                onChange={onEmailChange}
+                
               />
             </Grid>
             <Grid item xs={12}>
@@ -94,6 +104,9 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={password}
+                //setValue={setPassword}
+                onChange={onPasswordChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -110,6 +123,7 @@ export default function SignUp() {
             color="primary"
             href="Anketa"
             className={classes.submit}
+            onClick={() => registr(email,password)}
           >
             Начать
           </Button>
@@ -128,3 +142,4 @@ export default function SignUp() {
     </Container>
   );
 }
+export default SignUp
