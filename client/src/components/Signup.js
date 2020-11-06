@@ -17,6 +17,10 @@ import { useState, useEffect } from 'react';import Input from "../"
 import Copyright from './Copyright';
 import registr from './action/user';
 import { PinDropSharp, SettingsSystemDaydreamOutlined } from '@material-ui/icons';
+import { Field, reduxForm } from 'redux-form';
+import {connect} from 'react-redux';
+import {setRegistration} from './../reducers/userReducer'
+import {Redirect} from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,12 +42,106 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignUp = ({onSignupSubmit, email, onEmailChange, password, onPasswordChange}) => {
+const renderTextField = ({
+  label, input, 
+  meta:{ touched, invalid, error},
+    ...custom}) => (
+      <TextField
+      label={label}
+      placeholder={label}
+      error={touched && invalid} 
+      helperText={touched && error}
+      {...input}
+      {...custom}/>
+    )
+  
+
+const RegForm = reduxForm({form: "reg"})((props)=>{
   const classes = useStyles();
-  //const [email,setEmail]=useState("")
+  return(
+    <form className={classes.form} onSubmit={props.handleSubmit}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={5}>
+              <Field component={renderTextField}
+                    autoComplete="fname"
+                    name="firstName"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="firstName"
+                    label="Ваше имя"
+                    autoFocus
+              />
+        
+            </Grid>
+            <Grid item xs={12} sm={7}>
+              <Field component={renderTextField}
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="lastName"
+                    label="Ваша фамилия"
+                    name="lastName"
+                    autoComplete="lname"/>
+              
+            </Grid>
+            <Grid item xs={12}>
+              <Field component={renderTextField}
+                variant="outlined"
+                required
+                fullWidth
+                id="login"
+                label="Электронная почта"
+                name="login"
+                autoComplete="login"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Field component={renderTextField}
+                variant="outlined"
+                required
+                fullWidth
+                name="password"
+                label="Пароль"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Field 
+                name={"checkbox"}
+                component ={FormControlLabel}
+                control={<Checkbox value="allowExtralogins" color="primary" />}
+                label="Я хочу получать различные предложения и уведомления по электронной почте."
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}>
+            Начать
+          </Button>
+        
+        </form>
+  )
+})
+
+const Submit = (app) => (data) => {
+  app(data.login, data.password)
+}
+
+
+const SignUp = (props) => {
+  const classes = useStyles();
+  //const [login,setlogin]=useState("")
   //const [password,setPassword]=useState("")
 
-
+  if (props.isAuth)
+  return <Redirect to="/Anketa"/>
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -54,87 +152,17 @@ const SignUp = ({onSignupSubmit, email, onEmailChange, password, onPasswordChang
         <Typography component="h1" variant="h5">
           Регистрация
         </Typography>
-        <form className={classes.form} onSubmit={onSignupSubmit} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={5}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="Ваше имя"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={7}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Ваша фамилия"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Электронная почта"
-                name="email"
-                autoComplete="email"
-                value={email}
-                //setValue={setEmail}
-                onChange={onEmailChange}
-                
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Пароль"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                value={password}
-                //setValue={setPassword}
-                onChange={onPasswordChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="Я хочу получать различные предложения и уведомления по электронной почте."
-              />
-            </Grid>
+ 
+        <RegForm onSubmit={Submit(props.setRegistration)}/>
+
+        <Grid container justify="flex-end">
+          <Grid item>
+            <Link to="/welcome" variant="body2">
+              "Уже зарегестрированы? Войти"
+            </Link>
           </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            href="Anketa"
-            className={classes.submit}
-            onClick={() => registr(email,password)}
-          >
-            Начать
-          </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="welcome" variant="body2">
-                "Уже зарегестрированы? Войти"
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
+        </Grid>
+        {props.message}
       </div>
       <Box mt={5}>
         <Copyright />
@@ -142,4 +170,10 @@ const SignUp = ({onSignupSubmit, email, onEmailChange, password, onPasswordChang
     </Container>
   );
 }
-export default SignUp
+
+const mapStateToProps = (state) => ({
+    isAuth: state.user.isAuth,
+    message: state.user.message
+})
+
+export default connect(mapStateToProps, {setRegistration})(SignUp)

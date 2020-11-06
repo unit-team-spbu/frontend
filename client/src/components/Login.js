@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Login = ({onSigninSubmit, email, onEmailChange, password, onPasswordChange}) => {
+const Login = ({onSigninSubmit, login, onloginChange, password, onPasswordChange}) => {
   const classes = useStyles();
   const dispatch=useDispatch();
 
@@ -67,13 +67,13 @@ const Login = ({onSigninSubmit, email, onEmailChange, password, onPasswordChange
               margin="normal"
               required
               fullWidth
-              id="email"
+              id="login"
               label="Электронная почта"
-              name="email"
-              autoComplete="email"
+              name="login"
+              autoComplete="login"
               autoFocus
-              value={email}
-              onChange={onEmailChange}
+              value={login}
+              onChange={onloginChange}
             />
             <TextField
               variant="outlined"
@@ -95,7 +95,7 @@ const Login = ({onSigninSubmit, email, onEmailChange, password, onPasswordChange
               color="primary"
               className={classes.submit}
               href="lenta"
-              onClick={() => dispatch(auth(email,password))}
+              onClick={() => dispatch(auth(login,password))}
             >
               Войти
             </Button>

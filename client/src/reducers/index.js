@@ -3,10 +3,16 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from "redux-thunk";
 import fileReducer from "./FileReducer";
 import userReducer from "./userReducer";
+import {reducer} from "redux-form"
 
 const rootReducer = combineReducers( {
+    form: reducer,
     user: userReducer,
-    files: fileReducer,
+    files: fileReducer
 })
 
-export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+
+window.store = store;
+
+export default store;

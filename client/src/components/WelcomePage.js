@@ -5,12 +5,12 @@ import Login from './Login';
 
 class WelcomePage extends React.Component {
   state ={
-    email: '',
+    login: '',
     password: ''
   }
-  onEmailChange = (e) =>{
+  onloginChange = (e) =>{
     this.setState({
-        email: e.target.value
+        login: e.target.value
     })
   }  
   onPasswordChange = (e) =>{
@@ -20,14 +20,14 @@ class WelcomePage extends React.Component {
   }
   onSigninSubmit = (e) =>{
     e.preventDefault();
-    console.log('email: ' + this.state.email + ', password: ' + this.state.password);
+    console.log('login: ' + this.state.login + ', password: ' + this.state.password);
   }
   render() {
     return(
       <Login
         onSigninSubmit={this.onSigninSubmit} 
-        onEmailChange={this.onEmailChange}
-        email={this.state.email}
+        onloginChange={this.onloginChange}
+        login={this.state.login}
         password={this.state.password}
         onPasswordChange={this.onPasswordChange}
       />
