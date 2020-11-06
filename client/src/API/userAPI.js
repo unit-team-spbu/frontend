@@ -5,5 +5,9 @@ const ms = axios.create({
 })
 
 export const regAPI = (login, password) => {
-    return ms.post("/register/", {login, password}).then(res=>res.data)
+    return ms.post("/register", {login, password}).then(res=>res.data)
+}
+
+export const loginAPI = (login, password) => {
+    return ms.post("/login", {login, password}).then(res=>res.data)
 }

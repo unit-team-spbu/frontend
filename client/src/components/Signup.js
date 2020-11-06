@@ -12,11 +12,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { useState, useEffect } from 'react';import Input from "../"
+
 
 import Copyright from './Copyright';
-import registr from './action/user';
-import { PinDropSharp, SettingsSystemDaydreamOutlined } from '@material-ui/icons';
 import { Field, reduxForm } from 'redux-form';
 import {connect} from 'react-redux';
 import {setRegistration} from './../reducers/userReducer'
@@ -137,11 +135,11 @@ const Submit = (app) => (data) => {
 
 const SignUp = (props) => {
   const classes = useStyles();
-  //const [login,setlogin]=useState("")
-  //const [password,setPassword]=useState("")
+ 
 
   if (props.isAuth)
-  return <Redirect to="/Anketa"/>
+  return <Redirect to="/welcome"/>
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />

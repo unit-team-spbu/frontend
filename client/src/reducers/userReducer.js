@@ -1,13 +1,16 @@
 import { regAPI } from "../API/userAPI";
-import * as axios from 'axios'
+import { loginAPI } from "../API/userAPI";
 
 const SET_AUTH = "SET_AUTH_USER_REDUCER"
+const SET_LOG = "SET_LOG_USER_REDUCER"
 const SET_MESSAGE = "SET_MESSAGE_USER_REDUCER"
+const SET_TOKEN = "SET_TOKEN_USER_REDUCER"
 
 const defaultState= {
     currentUser: {},
     isAuth: false,
-    message: ""
+    message: "",
+    isLog: false
 }
 
 export default function userReducer(state=defaultState, action){
@@ -17,18 +20,30 @@ export default function userReducer(state=defaultState, action){
                 ...state,
                 isAuth: action.isAuth
             }
+        case SET_LOG:
+            return{
+                ...state,
+                isLog: action.isLog
+            }
         case SET_MESSAGE:
             return{
                 ...state, 
                 message: action.message
             }
+        case SET_TOKEN:
+            return{
+                ...state, 
+                 currentUser: action.currentUser
+            }   
         default:
             return state
     }
 }
 
 const setAuth = (isAuth) => ({type: SET_AUTH, isAuth});
+const setLog = (isLog) => ({type: SET_LOG, isLog});
 const setMessage = (message) => ({type: SET_MESSAGE, message});
+const setToken = (currentUser) => ({type: SET_TOKEN, currentUser});
 
 export const setRegistration = (login, password) => dispatch => {
     regAPI(login, password).then(res=>{
@@ -40,18 +55,15 @@ export const setRegistration = (login, password) => dispatch => {
     });
 }
 
-/*export const auth = (login,password) => {
-    debugger
-    return async dispatch => {
-            try{
-                const response = await axios.post("http://ec2-3-91-232-201.compute-1.amazonaws.com:8000/login", {
-                login,
-                password 
-            })  
-            console.log(response.data)
+export const setAuthorization = (login,password) => dispatch => {
+     loginAPI(login, password).then(res=>{
+        dispatch(setLog(true))
+        dispatch(setToken(res.token))
+        alert(res.message)
+    }, err=>{
+        dispatch(setMessage(err.toString()))
+        alert(err.toString())
+    });
+}
 
-        } catch (e) {
-            alert(e.response.data.message)
-        }
-    }
-}*/
+    

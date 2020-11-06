@@ -12,10 +12,12 @@ import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
-import auth from './action/auth';
-import {useDispatch} from "react-redux"
 
 import Copyright from './Copyright';
+import { Field, reduxForm } from 'redux-form';
+import {connect} from 'react-redux';
+import {setAuthorization} from './../reducers/userReducer'
+import {Redirect} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -45,9 +47,70 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Login = ({onSigninSubmit, login, onloginChange, password, onPasswordChange}) => {
+const renderTextField = ({
+  label, input, 
+  meta:{ touched, invalid, error},
+    ...custom}) => (
+      <TextField
+      label={label}
+      placeholder={label}
+      error={touched && invalid} 
+      helperText={touched && error}
+      {...input}
+      {...custom}/>
+    )
+
+
+const AuthForm = reduxForm({form: "auth"})((props)=>{
+    const classes = useStyles();
+    return(
+      <form className={classes.form}onSubmit={props.handleSubmit}>
+            <Field component={renderTextField}
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="login"
+              label="Электронная почта"
+              name="login"
+              autoComplete="login"
+              autoFocus
+            />
+           <Field component={renderTextField}
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Пароль"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Войти
+            </Button>
+            
+          </form>
+    )
+})
+
+const Submit = (app) => (data) => {
+  app(data.login, data.password)
+}
+
+
+const Login = (props) => {
   const classes = useStyles();
-  const dispatch=useDispatch();
+
+  if (props.isLog)
+  return <Redirect to="/Anketa"/>
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -61,45 +124,11 @@ const Login = ({onSigninSubmit, login, onloginChange, password, onPasswordChange
           <Typography component="h1" variant="h5">
             Заходите на сайт, всегда Вам рады!
           </Typography>
-          <form className={classes.form} onSubmit={onSigninSubmit} noValidate>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="login"
-              label="Электронная почта"
-              name="login"
-              autoComplete="login"
-              autoFocus
-              value={login}
-              onChange={onloginChange}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Пароль"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={onPasswordChange}
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              href="lenta"
-              onClick={() => dispatch(auth(login,password))}
-            >
-              Войти
-            </Button>
-            <Grid container>
+        
+
+          <AuthForm onSubmit={Submit(props.setAuthorization)}/>
+
+          <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
                   Забыли пароль?
@@ -114,11 +143,18 @@ const Login = ({onSigninSubmit, login, onloginChange, password, onPasswordChange
             <Box mt={5}>
               <Copyright />
             </Box>
-          </form>
+
+
         </div>
       </Grid>
     </Grid>
   );
 }
 
-export default Login
+const mapStateToProps = (state) => ({
+  isLog: state.user.isLog,
+  message: state.user.message,
+  currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToProps, {setAuthorization})(Login)

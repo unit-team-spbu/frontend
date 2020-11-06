@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
-//import Navbar from './NavBar';
-import WelcomePage from './WelcomePage';
+
+import Login from './Login';
 import SignUp from './Signup';
 import Anketa from './Anketa';
 import lenta from './lenta/src/index';
@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path='/welcome' component={WelcomePage}/>
+        <Route path='/welcome' component={Login}/>
         <Route path='/Signup' component={SignUp} />
         <Route path='/Anketa' component={Anketa} />
 
