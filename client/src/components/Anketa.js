@@ -22,17 +22,22 @@ import Link from '@material-ui/core/Link';
 
 
 const useStyles = makeStyles((theme) => ({
-    toolbar: {
+   toolbar: {
         borderBottom: `1px solid ${theme.palette.divider}`,
+        width: '100%',
+        position: 'left',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       },
-      toolbarTitle: {
+    toolbarTitle: {
         flex: 1,
       },
-      toolbarSecondary: {
+    toolbarSecondary: {
         justifyContent: 'space-between',
         overflowX: 'auto',
       },
-      toolbarLink: {
+    toolbarLink: {
         padding: theme.spacing(1),
         flexShrink: 0,
       },
@@ -70,11 +75,12 @@ export default function SignUp() {
           color="inherit"
           noWrap
           className={classes.toolbarTitle}
+          href="/lenta"
          
         >
           IT Events
           </Typography>
-          </Button>   {/* Вставить ссылку на главную страницу */}
+          </Button> 
         <Typography
           component="h2"
           variant="h5"

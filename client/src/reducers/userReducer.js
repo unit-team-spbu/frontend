@@ -7,7 +7,7 @@ const SET_MESSAGE = "SET_MESSAGE_USER_REDUCER"
 const SET_TOKEN = "SET_TOKEN_USER_REDUCER"
 
 const defaultState= {
-    currentUser: {},
+    currentUser: "",
     isAuth: false,
     message: "",
     isLog: false
@@ -47,9 +47,11 @@ const setToken = (currentUser) => ({type: SET_TOKEN, currentUser});
 
 export const setRegistration = (login, password) => dispatch => {
     regAPI(login, password).then(res=>{
+        debugger
         dispatch(setAuth(true))
         alert(res.message)
     }, err=>{
+        debugger
         dispatch(setMessage(err.toString()))
         alert(err.toString())
     });
@@ -57,10 +59,12 @@ export const setRegistration = (login, password) => dispatch => {
 
 export const setAuthorization = (login,password) => dispatch => {
      loginAPI(login, password).then(res=>{
-        dispatch(setLog(true))
+         debugger
         dispatch(setToken(res.token))
-        alert(res.message)
+        dispatch(setLog(true))
+        debugger
     }, err=>{
+        debugger
         dispatch(setMessage(err.toString()))
         alert(err.toString())
     });

@@ -109,8 +109,10 @@ const Submit = (app) => (data) => {
 const Login = (props) => {
   const classes = useStyles();
 
-  if (props.isLog)
+  if (props.isLog){
+  alert('User token: '+props.currentUser)
   return <Redirect to="/Anketa"/>
+  }
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -143,7 +145,7 @@ const Login = (props) => {
             <Box mt={5}>
               <Copyright />
             </Box>
-
+            
 
         </div>
       </Grid>
@@ -151,10 +153,10 @@ const Login = (props) => {
   );
 }
 
-const mapStateToProps = (state) => ({
+const mapStateProps = (state) => ({
   isLog: state.user.isLog,
   message: state.user.message,
   currentUser: state.user.currentUser
 })
 
-export default connect(mapStateToProps, {setAuthorization})(Login)
+export default connect(mapStateProps, {setAuthorization})(Login)

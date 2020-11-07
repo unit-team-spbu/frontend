@@ -137,8 +137,10 @@ const SignUp = (props) => {
   const classes = useStyles();
  
 
-  if (props.isAuth)
+  
+  if (props.isAuth){
   return <Redirect to="/welcome"/>
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -155,12 +157,11 @@ const SignUp = (props) => {
 
         <Grid container justify="flex-end">
           <Grid item>
-            <Link to="/welcome" variant="body2">
+            <Link href="/welcome" variant="body2">
               "Уже зарегестрированы? Войти"
             </Link>
           </Grid>
         </Grid>
-        {props.message}
       </div>
       <Box mt={5}>
         <Copyright />
