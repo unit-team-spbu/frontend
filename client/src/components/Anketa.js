@@ -18,8 +18,12 @@ import Copyright from './Copyright';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
-import Link from '@material-ui/core/Link';
+//import {Link} from '@material-ui/core/Link';
+import {Link} from 'react-router-dom';
 
+import {connect} from 'react-redux';
+import {setAuthorization} from './../reducers/userReducer'
+import {Redirect} from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
    toolbar: {
@@ -61,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+const SignUp = (props) => {
   const classes = useStyles();
 
   return (
@@ -69,14 +73,14 @@ export default function SignUp() {
       <React.Fragment>
       <Toolbar className={classes.toolbar}>
 
-        <Button size="small" href="lenta">
+        <Button size="small"  component={Link} to="/lenta">
         <Typography
           component="h2"
           variant="h5"
           color="inherit"
           noWrap
           className={classes.toolbarTitle}
-          href="/lenta"
+          
         >
           IT Events
           </Typography>
@@ -95,7 +99,7 @@ export default function SignUp() {
         </IconButton>
         </Typography>
         
-        <Button Link to="/lenta" variant="outlined"  size="small" >
+        <Button href="lenta" variant="outlined"  size="small" >
           Выйти
         </Button>
       </Toolbar>
@@ -163,7 +167,7 @@ export default function SignUp() {
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <FormControlLabel
-                        control={<Checkbox value="ui" color="secondary" />}
+                        control={<Checkbox value="ui"  color="secondary" />}
                         label="UI/UX"
                     />
                 </Grid>
@@ -387,10 +391,9 @@ export default function SignUp() {
                     color="primary"
                     size="large"
                     fullWidth
-                    href="welcome"
                     className={classes.button}
                     startIcon={<SaveIcon />}
-                    href="lenta"
+                    Link to="/lenta"
                     >
                     Сохранить       
                     </Button>
@@ -404,3 +407,10 @@ export default function SignUp() {
     </React.Fragment> 
   );
 }
+const mapAnketaStateProps = (state) => ({
+    isLog: state.user.isLog,
+    message: state.user.message,
+    currentUser: state.user.currentUser
+  })
+  
+  export default connect(mapAnketaStateProps, {})(SignUp)

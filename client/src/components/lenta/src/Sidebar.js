@@ -321,61 +321,61 @@ const  Sidebar = (props) => {
 
   const Submit = (app) => (data) => {
     if (data.offline===true)
-      list.push('"offline"')
+      list.push('offline')
 
     if (data.online===true)
-      list.push('"online"')
+      list.push('online')
     
     if (data.free===true)
-      list.push('"free"')
+      list.push('free')
 
     if (data.paid===true)
-      list.push('"paid"')
+      list.push('paid')
 
     if (data.petersburg===true)
-      list.push('"petersburg"')
+      list.push('petersburg')
 
     if (data.moscow===true)
-      list.push('"moscow"')
+      list.push('moscow')
 
     if (data.hackathon===true)
-      list.push('"hackathon"')
+      list.push('hackathon')
 
     if (data.lecture===true)
-      list.push('"lecture"')
+      list.push('lecture')
 
     if (data.training===true)
-      list.push('"training"')
+      list.push('training')
     
     if (data.webinar===true)
-      list.push('"webinar"')
+      list.push('webinar')
 
     if (data.traineeship===true)
-      list.push('"traineeship"')
+      list.push('traineeship')
 
     if (data.forum===true)
-      list.push('"forum"')
+      list.push('forum')
 
     if (data.seminar===true)
-      list.push('"seminar"')
+      list.push('seminar')
 
     if (data.onlinecourse===true)
-      list.push('"onlinecourse"')
+      list.push('onlinecourse')
 
     if (data.conference===true)
-      list.push('"conference"')
+      list.push('conference')
 
     if (data.today===true)
-      list.push('"today"')
+      list.push('today')
 
     if (data.tomorrow===true)
-      list.push('"tomorrow"')
+      list.push('tomorrow')
 
     if (data.week===true)
-      list.push('"week"')
+      list.push('week')
 
     if (data.month===true)
-      list.push('"month"')
+      list.push('month')
       
     app(props.currentUser, list)
   }

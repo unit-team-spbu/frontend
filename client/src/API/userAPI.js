@@ -1,7 +1,7 @@
 import * as axios from 'axios';
 
 const ms = axios.create({
-    baseURL: "http://ec2-3-82-198-202.compute-1.amazonaws.com:8000"
+    baseURL: "http://ec2-52-207-239-198.compute-1.amazonaws.com:8000"
 })
 
 export const regAPI = (login, password) => {
@@ -15,9 +15,6 @@ export const loginAPI = (login, password) => {
 
 export const lentaAPI = (currentUser, list) => {
 
-    if (list.lenght > 0)
-        return ms.get("/feed?token="+currentUser+"&tags="+list, {currentUser,list}).then(res=>res.data)
+    return ms.post("/feed/", {currentUser, list}).then(res=>res.data)
     
-    else
-        return ms.get("/feed?token="+currentUser, {currentUser,list}).then(res=>res.data)
 }

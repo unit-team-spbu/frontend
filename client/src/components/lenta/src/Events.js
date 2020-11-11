@@ -47,7 +47,7 @@ export default function Events(props) {
           <Grid container item xs={9} spacing={4}>
             {events.map((event) => (
               <Grid item xs={3} sm={4}>
-              <CardEvent title={event.title} image_url={event.image_url} short_info= {event.short_info}/>
+              <CardEvent title={event.title} image_url="https://source.unsplash.com/random/?programming" short_info= {event.short_info}/>
               </Grid>
             ))}
           </Grid>
