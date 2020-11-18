@@ -97,4 +97,15 @@ export const setLenta = (currentUser, list) => dispatch => {
        alert(err.toString())
    });
 }
+
+export const setEvent = (currentUser) => dispatch => {
+    eventAPI(currentUser, list).then(res=>{
+        debugger
+        alert("Ok")
+    }, err=>{
+        debugger
+        dispatch(setMessage(err.toString()))
+        alert(err.toString())
+    });
+}
     

@@ -6,7 +6,8 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
+//import Link from '@material-ui/core/Link';
+import {Link} from 'react-router-dom';
 import { TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -34,7 +35,7 @@ export default function Header(props) {
     <React.Fragment>
       <Toolbar className={classes.toolbar}>
 
-        <Button size="small" href="lenta"> 
+        <Button size="small" component={Link} to="/lenta"> 
         <Typography
           component="h2"
           variant="h5"
@@ -59,17 +60,17 @@ export default function Header(props) {
         </IconButton>
         </Typography>
         
-        <Button variant="outlined" href="#" size="small" href="anketa">
+        <Button variant="outlined" size="small"  component={Link} to="/Anketa">
           Личный кабинет
         </Button>
-        <Button variant="outlined" href="#" size="small" href="welcome">
+        <Button variant="outlined" size="small" component={Link} to="/welcome">
           Войти
         </Button>
 
       </Toolbar>
 
       
-      <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+      {/*<Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
         {sections.map((section) => (
           <Link
             color="inherit"
@@ -82,7 +83,7 @@ export default function Header(props) {
             {section.title}
           </Link>
         ))}
-      </Toolbar>
+        </Toolbar> нижняя строчка Header*/}
     </React.Fragment>
   );
 }

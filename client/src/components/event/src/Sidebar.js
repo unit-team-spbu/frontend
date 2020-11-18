@@ -19,6 +19,8 @@ import ThumbDownAltOutlinedIcon from '@material-ui/icons/ThumbDownAltOutlined';
 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import {Link} from 'react-router-dom';
+
 
 const useStyles = makeStyles((theme) => ({
   sidebarAboutBox: {
@@ -80,7 +82,7 @@ export default function Sidebar(props) {
       
       </List>
       <div className={classes.buttonsSide}>
-        <Button variant="contained" color="secondary" >Зарегистрироваться</Button>
+        <Button variant="contained" color="secondary" component={Link} to="#">Зарегистрироваться</Button>
         
         <FormControlLabel
         control={<Checkbox icon={<ThumbUpAltOutlinedIcon />} checkedIcon={<ThumbUpAltOutlinedIcon />} name="checkedH" />}

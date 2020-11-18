@@ -15,6 +15,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,7 +40,7 @@ export default function CardEvent(props) {
   return (
     <Card className={classes.root}>
       <CardActionArea
-          href="event"
+          component={Link} to="/event"
       >
         <CardMedia
           component="img"
@@ -60,7 +61,7 @@ export default function CardEvent(props) {
         </CardContent>
       </CardActionArea>
       <CardActions disableSpacing>
-        <Button size="medium" color="primary" >
+        <Button size="medium" color="primary" component={Link} to="#">
           Зарегистрироваться
         </Button>
         <FormControlLabel

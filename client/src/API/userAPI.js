@@ -18,3 +18,7 @@ export const lentaAPI = (currentUser, list) => {
     return ms.post("/feed/", {currentUser, list}).then(res=>res.data)
     
 }
+
+export const eventAPI = (currentUser) =>{
+    return ms.get("/feed/",{currentUser}).then(res=>res.data)
+}

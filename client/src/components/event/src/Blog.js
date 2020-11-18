@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container';
 import Header from './Header';
 import Event from './Event';
 
-const sections = [
+{/*const sections = [
   { title: 'Конференции', url: '#' },
   { title: 'Хакатоны', url: '#' },
   { title: 'Вебинары', url: '#' },
@@ -13,9 +13,10 @@ const sections = [
   { title: 'Стажировки', url: '#' },
   { title: 'Семинары', url: '#' },
   { title: 'Лекции', url: '#' },  
-];
+];*/}
+const Blog = (props) => {
 
-const event = {
+  const event = {
     title: "Directum Day 2020",
     image_url: "https://izhlife.ru/uploads/posts/newsimg/imgs-1523947921.jpg",
     short_info: "3 часа о самых актуальных кейсах. Авторитетные эксперты. Все, что нужно знать, чтобы выстроить эффективное взаимодействие сотрудников, повысить устойчивость компании и уверенно работать в любых условиях.",
@@ -25,19 +26,24 @@ const event = {
     where: "г. Санкт Петербург ул. проспект Просвещения дом 13 офис 405 ",
     price: "Бесплатно",
     time: "9:30"
-};
-
-export default function Blog() {
+  };
 
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <Container maxWidth="lg">
-        <Header sections={sections} />
-        <main>
-          <Event event={event} />
-        </main>
-      </Container>
-    </React.Fragment>
-  );
+      <React.Fragment>
+        <CssBaseline />
+        <Container maxWidth="lg">
+          <Header /*sections={sections} нижняя строчка Header*/ />
+          <main>
+            <Event event={event} />
+          </main>
+        </Container>
+      </React.Fragment>
+    );
+  
 }
+
+const mapStateToProps = (state) => ({
+  message: state.user.message
+})
+
+export default connect(mapStateToProps, {setEvent})(Blog)

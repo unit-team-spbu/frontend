@@ -79,9 +79,7 @@ const SignUp = (props) => {
           variant="h5"
           color="inherit"
           noWrap
-          className={classes.toolbarTitle}
-          
-        >
+          className={classes.toolbarTitle}>
           IT Events
           </Typography>
           </Button> 

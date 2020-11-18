@@ -9,7 +9,7 @@ import {setLenta} from './../../../reducers/userReducer'
 import {Redirect} from 'react-router-dom'
 
 
-const sections = [
+{/*const sections = [
   { title: 'Конференции', url: '#' },
   { title: 'Хакатоны', url: '#' },
   { title: 'Вебинары', url: '#' },
@@ -18,7 +18,7 @@ const sections = [
   { title: 'Стажировки', url: '#' },
   { title: 'Семинары', url: '#' },
   { title: 'Лекции', url: '#' },  
-];
+];*/}
 
 const events = [
   {
@@ -125,7 +125,7 @@ const Blog = (props) => {
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Header sections={sections} />
+        <Header /*sections={sections}нижняя строчка Header*/ /> 
         <main>
           <Events events={events} />
         </main>

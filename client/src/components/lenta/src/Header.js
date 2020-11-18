@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import {Link} from 'react-router-dom';
 import { TextField } from '@material-ui/core';
 
+
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
@@ -34,14 +35,13 @@ export default function Header(props) {
     <React.Fragment>
       <Toolbar className={classes.toolbar}>
 
-        <Button size="small" href="lenta"> 
+        <Button size="small" component={Link} to="/lenta"> 
         <Typography
           component="h2"
           variant="h5"
           color="inherit"
           noWrap
-          className={classes.toolbarTitle}
-        >
+          className={classes.toolbarTitle}>
           IT Events
         </Typography>
         </Button>   
@@ -64,14 +64,14 @@ export default function Header(props) {
         <Button variant="outlined"  size="small" component={Link} to="/Anketa">
           Личный кабинет   
         </Button>
-        <Button variant="outlined" href="#" size="small" href="welcome">
+        <Button variant="outlined" size="small" component={Link} to="/welcome">
           Войти
         </Button>
 
       </Toolbar>
 
       
-      <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+     {/* <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
         {sections.map((section) => (
           <Link
             color="inherit"
@@ -84,7 +84,8 @@ export default function Header(props) {
             {section.title}
           </Link>
         ))}
-      </Toolbar>
+        </Toolbar> нижняя строчка Header*/}
+
     </React.Fragment>
   );
 }
