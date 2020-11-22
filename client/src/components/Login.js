@@ -8,7 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
+import {Link} from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,6 +18,7 @@ import { Field, reduxForm } from 'redux-form';
 import {connect} from 'react-redux';
 import {setAuthorization} from './../reducers/userReducer'
 import {Redirect} from 'react-router-dom'
+import { LinkOffSharp } from '@material-ui/icons';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -61,10 +62,10 @@ const renderTextField = ({
     )
 
 
-const AuthForm = reduxForm({form: "auth"})((props)=>{
+const AuthForm = reduxForm({form: "auth"}) ((props)=>{
     const classes = useStyles();
     return(
-      <form className={classes.form}onSubmit={props.handleSubmit}>
+      <form className={classes.form} onSubmit={props.handleSubmit}>
             <Field component={renderTextField}
               variant="outlined"
               margin="normal"
@@ -101,18 +102,22 @@ const AuthForm = reduxForm({form: "auth"})((props)=>{
     )
 })
 
-const Submit = (app) => (data) => {
-  app(data.login, data.password)
-}
+
 
 
 const Login = (props) => {
   const classes = useStyles();
 
+const Submit = (app) => (data) => {
+  app(data.login, data.password)
+}
+
   if (props.isLog){
-  alert('User token: '+props.currentUser)
+    debugger
+  //alert(props.interests+props.currentUser+props.isGet+props.Ind[0])
   return <Redirect to="/Anketa"/>
   }
+
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -130,16 +135,11 @@ const Login = (props) => {
 
           <AuthForm onSubmit={Submit(props.setAuthorization)}/>
 
-          <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Забыли пароль?
-                </Link>
-              </Grid>
+          <Grid container justify="flex-end">
               <Grid item>
-                <Link href="Signup" variant="body2">
-                  "Нет учетной записи? Регистрация"
-                </Link>
+                <Button  size="small" color="primary" component={Link} to="/Signup">
+                  Нет учетной записи? Регистрация
+                </Button>
               </Grid>
             </Grid>
             <Box mt={5}>
@@ -156,7 +156,10 @@ const Login = (props) => {
 const mapStateProps = (state) => ({
   isLog: state.user.isLog,
   message: state.user.message,
-  currentUser: state.user.currentUser
+  currentUser: state.user.currentUser,
+  interests: state.user.interests,
+  isGet: state.user.isGet,
+  Ind: state.user.Ind
 })
 
 export default connect(mapStateProps, {setAuthorization})(Login)

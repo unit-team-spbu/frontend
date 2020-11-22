@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
+import {Link} from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -136,13 +136,11 @@ const Submit = (app) => (data) => {
 const SignUp = (props) => {
   const classes = useStyles();
  
-
-  
   if (props.isAuth){
   return <Redirect to="/welcome"/>
   }
 
-  return (
+  else return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -157,9 +155,9 @@ const SignUp = (props) => {
 
         <Grid container justify="flex-end">
           <Grid item>
-            <Link href="/welcome" variant="body2">
-              "Уже зарегестрированы? Войти"
-            </Link>
+            <Button  size="small" color="primary" component={Link} to="/welcome">
+              Уже зарегистрированы? Войти
+            </Button>
           </Grid>
         </Grid>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
-import Header from './Header';
+import Headers from './Headers';
 import Event from './Event';
 
 const sections = [
@@ -27,13 +27,13 @@ const event = {
     time: "9:30"
 };
 
-export default function Blog() {
+export default function Blogs() {
 
   return (
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Header sections={sections} />
+        <Headers sections={sections} />
         <main>
           <Event event={event} />
         </main>

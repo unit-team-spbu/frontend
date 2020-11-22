@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import markdown from './text'
-import Card from '@material-ui/core/Card';
+import card from '@material-ui/core/card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -17,6 +17,10 @@ import Button from '@material-ui/core/Button';
 import GradeRoundedIcon from '@material-ui/icons/GradeRounded';
 import IconButton from '@material-ui/core/IconButton';
 import CardEvent from './cardevent';
+
+import {connect} from 'react-redux';
+
+import {Redirect} from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -35,19 +39,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const posts = [markdown];
 
-export default function Events(props) {
-  const { events } = props;
+
+const Events = (props) => {
+  //const { events } = props;
   const classes = useStyles();
 
   return (
     <React.Fragment>
-      <Grid container spacing={5} className={classes.mainGrid}>
-          <Grid container item xs={9} spacing={4}>
-            {events.map((event) => (
-              <Grid item xs={3} sm={4}>
-              <CardEvent title={event.title} image_url={event.image_url} short_info= {event.short_info}/>
+      <Grid container spacing={3} className={classes.mainGrid}>
+          <Grid container item xs={9} spacing={3}>
+            {props.lenta.map((event) => (
+
+              <Grid item xs={7} sm={6} key={event._id}>
+              <CardEvent title={event.title}  image_url=/*{event.image_url}*/{"https://source.unsplash.com/random/?programming,it"+event.tags[0]}
+              short_info= {event.startDate}  id={event._id}>
+              </CardEvent>
+
               </Grid>
             ))}
           </Grid>
@@ -61,4 +69,12 @@ export default function Events(props) {
     </React.Fragment>
   );
 }
+
+const mapLentaStateProps = (state) => ({
+  message: state.user.message,
+  currentUser: state.user.currentUser,
+  lenta: state.user.lenta,
+})
+
+export default connect(mapLentaStateProps, {})(Events)
 

@@ -19,6 +19,9 @@ import ThumbDownAltOutlinedIcon from '@material-ui/icons/ThumbDownAltOutlined';
 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import cardevent from '../../lenta/src/cardevent';
+import { Card } from '@material-ui/core';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   sidebarAboutBox: {
@@ -36,9 +39,9 @@ function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
 
-export default function Sidebar(props) {
+const Sidebar = (props) => {
   const classes = useStyles();
-  const {date,time, format, where, price } = props;
+
 
   return (
     <Grid item xs={12} md={4}>
@@ -54,29 +57,26 @@ export default function Sidebar(props) {
           <ListItemIcon>
             <TodayIcon />
           </ListItemIcon>
-          <ListItemText primary="Дата" secondary={date} />
+          <ListItemText primary="Дата" secondary={props.Card.startDate} />
         </ListItem>
 
-        <ListItem >
-          <ListItemIcon>
-            <AccessTimeOutlinedIcon />
-          </ListItemIcon>
-          <ListItemText primary="Время"  secondary={time} />
-        </ListItem>
+       
 
         <ListItem >
           <ListItemIcon>
             <RoomOutlinedIcon />
           </ListItemIcon>
-          <ListItemText primary="Место"  secondary={where} />
+          <ListItemText primary="Место"  secondary={props.Card.location} />
         </ListItem>
 
         <ListItem >
           <ListItemIcon>
             <MonetizationOnOutlinedIcon />
           </ListItemIcon>
-          <ListItemText primary="Стоимость"  secondary={price} />
+          <ListItemText primary="Стоимость"  secondary={props.Card.tags[1]} />
         </ListItem>
+
+        
       
       </List>
       <div className={classes.buttonsSide}>
@@ -96,9 +96,13 @@ export default function Sidebar(props) {
   );
 }
 
-Sidebar.propTypes = {
-  archives: PropTypes.array,
-  description: PropTypes.string,
-  social: PropTypes.array,
-  title: PropTypes.string,
-};
+const mapbarStateProps = (state) => ({
+  message: state.user.message,
+  currentUser: state.user.currentUser,
+  interests: state.user.interests,
+  lenta: state.user.lenta,
+  iscard: state.user.iscard,
+  Card:  state.user.Card
+})
+
+export default connect(mapbarStateProps, {})(Sidebar)

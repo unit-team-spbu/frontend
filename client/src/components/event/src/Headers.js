@@ -44,23 +44,11 @@ const ButtonLK = reduxForm({form: "lk"})((props)=>{
   )
 })
 
-const Header = (props) => {
+const ButtonEvent = reduxForm({form: "event"})((props)=>{
   const classes = useStyles();
-  
-    const SubmitButtonLK = (app) => (data) => {
-    app(props.currentUser)}
-
-    if (props.LK){
-        debugger
-        //props.LK=false;
-        return <Redirect to="/Anketa"/>
-    }
-    debugger
-    return (
-      <React.Fragment>
-        <Toolbar className={classes.toolbar}>
-
-          <Button size="small" component={Link} to="/lenta" > 
+  return(
+    <form  onSubmit={props.handleSubmit}>
+    <Button size="small"   type="submit"> 
           <Typography
             component="h2"
             variant="h5"
@@ -71,6 +59,34 @@ const Header = (props) => {
             IT Events
           </Typography>
           </Button>   
+  </form>
+  )
+})
+
+const Headers = (props) => {
+  const classes = useStyles();
+  
+    const SubmitButtonLK = (app) => (data) => {
+    app(props.currentUser)}
+
+    const SubmitButtonEvent = (app) => (data) => {
+      app(props.currentUser,[],true)}
+
+    if (props.LK){
+        debugger
+        //props.LK=false;
+        return <Redirect to="/Anketa"/>
+    }
+    else if (props.isEv){
+      debugger
+      return <Redirect to="/lenta"/>
+    }
+    
+    return (
+      <React.Fragment>
+        <Toolbar className={classes.toolbar}>
+
+        <ButtonEvent onSubmit={SubmitButtonEvent(props.setlk)}/>
         
           <Typography
             component="h2"
@@ -113,6 +129,7 @@ const maplkStateProps = (state) => ({
   Ind: state.user.Ind,
   LK: state.user.LK,
   isLog: state.user.isLog,
+  isEv: state.user.isEv,
 })
 
-export default connect(maplkStateProps, {setlk})(Header)
+export default connect(maplkStateProps, {setlk})(Headers)

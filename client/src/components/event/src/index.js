@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Blog from './Blog';
+import Blogs from './Blogs';
 
 
 function event() {
   return (
-    <Blog />
+    <Blogs />
   );
 }
 

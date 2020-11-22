@@ -15,12 +15,33 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import { reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import {setCard} from './../../../reducers/userReducer'
+import { Redirect } from 'react-router-dom';
+import { Grid, Hidden } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 280,
-    height: 300,
+    maxWidth: 700,
+    height: 430,
 
+  },
+  media: {
+    height: 240,
+    paddingTop: '56.25%', // 16:9
+  },
+  controls: {
+    display: 'flex',
+    alignItems: 'center',
+    '& > *': {
+    marginbottom: theme.spacing(3),
+    }
+  },
+  style: 
+  {
+    height: 100, 
+    overflow: Hidden
   },
   buttonsSide: {
     '& > *': {
@@ -32,42 +53,82 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CardEvent(props) {
+const Cardform = reduxForm({form: "card"})((props)=>{
   const classes = useStyles();
-  const { title, image_url, short_info } = props;
+
+  debugger
+  return(
+      <form className={classes.form} onSubmit={props.handleSubmit}>
+
+        <CardActionArea type="submit" >
+            <CardMedia
+              component="img"
+              //alt="Contemplative Reptile"
+              height="240"
+              image={props.image_url}
+              //title="Contemplative Reptile"
+            />
+            <CardContent>
+              
+              <Typography gutterBottom   variant="h5" component="h2" >
+                {props.title}
+              </Typography>
+        
+              <Typography variant="body2" color="textSecondary" >
+                {props.short_info}
+              </Typography>
+            </CardContent>
+          </CardActionArea>`
+
+
+        </form>
+        )
+    })
+
+  const Submit = (app, currentUser, id) => (data) => {
+    app(currentUser, id)
+    debugger
+    
+  }
+
+const CardEvent = (props) => {
+  const classes = useStyles();
+
+  
+
+  if (props.iscard){
+    return <Redirect to="/event"/>
+  }
 
   return (
     <Card className={classes.root}>
-      <CardActionArea
-          href="event"
-      >
-        <CardMedia
-          component="img"
-          alt="Contemplative Reptile"
-          height="140"
-          image={image_url}
-          title="Contemplative Reptile"
 
-        />
-        <CardContent
-        >
-          <Typography gutterBottom variant="h5" component="h2">
-            {title}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" >
-            {short_info}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions disableSpacing>
-        <Button size="medium" color="primary" >
+      <Cardform short_info={props.short_info} 
+       image_url={props.image_url} 
+       title={props.title} 
+        onSubmit={Submit(props.setCard, props.currentUser, props.id)}/>
+
+      <CardActions /*disableSpacing*/>
+      <div  className={classes.controls}>
+        <Button size="medium" color="primary"  >
           Зарегистрироваться
         </Button>
         <FormControlLabel
         control={<Checkbox icon={<GradeRoundedIcon />} checkedIcon={<GradeRoundedIcon />} name="checkedH" />}
       />
-
+      </div>
       </CardActions>
+     
     </Card>
   );
 }
+
+const mapCardStateProps = (state) => ({
+  message: state.user.message,
+  currentUser: state.user.currentUser,
+  interests: state.user.interests,
+  lenta: state.user.lenta,
+  iscard: state.user.iscard,
+})
+
+export default connect(mapCardStateProps, {setCard})(CardEvent)
