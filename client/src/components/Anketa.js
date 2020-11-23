@@ -518,271 +518,271 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
         )
       })
 
+      let inter;
+      let inds;
+
+      const Submit = (app,currentUser,Post,Get) => (data) => {
+
+        inter=[];
+        inds=[];
+    
+        if (data.Web){
+            inter.push('Web')
+            inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.Gamedev===true){
+            inter.push('Gamedev')
+            inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.Mobile===true){
+          inter.push('Mobile')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.Robot===true){
+          inter.push('Robot')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.DevOps===true){
+          inter.push('DevOps')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.QA===true){
+          inter.push('QA')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.DataScience===true){
+          inter.push('DataScience')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+        
+        if (data.UI===true){
+          inter.push('UI')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.Java===true){
+          inter.push('Java')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.PHP===true){
+          inter.push('PHP')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.Python===true){
+          inter.push('Python')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.Csharp===true){
+          inter.push('Csharp')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.Cplus===true){
+          inter.push('Cplus')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+        
+        if (data.CSS===true){
+          inter.push('CSS')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.HTML===true){
+          inter.push('HTML')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.JavaScript===true){
+          inter.push('JavaScript')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.React===true){
+          inter.push('React')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+    
+        if (data.Angular===true){
+          inter.push('Angular')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.Kotlin===true){
+          inter.push('Kotlin')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.hackathon===true){
+            inter.push('hackathon')
+            inds.push(true);
+        }
+        else
+            inds.push(false); 
+      
+        if (data.lecture===true){
+            inter.push('lecture')
+            inds.push(true);
+        }
+        else
+            inds.push(false);
+    
+        if (data.conference===true){
+              inter.push('conference')
+              inds.push(true);
+        }
+        else
+            inds.push(false); 
+    
+        if (data.onlinecourse===true){
+              inter.push('onlinecourse')
+              inds.push(true);
+        }
+        else
+          inds.push(false);
+          
+          
+        if (data.Стажировка===true){
+          inter.push('traineeship')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+          
+        if (data.forum===true){
+            inter.push('forum')
+            inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+          
+        if (data.training===true){
+          inter.push('training')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.webinar===true){
+            inter.push('webinar')
+            inds.push(true);
+        }
+        else
+            inds.push(false); 
+      
+        if (data.seminar===true){
+            inter.push('seminar')
+            inds.push(true);
+        }
+        else
+            inds.push(false); 
+       
+    
+        if (data.offline){
+            inter.push('offline')
+            inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.online===true){
+            inter.push('online')
+            inds.push(true);
+        }
+        else
+          inds.push(false);   
+          
+          
+        if (data.moscow===true){
+          inter.push('moscow')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.petersburg===true){
+          inter.push('petersburg')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+          
+        if (data.Yes===true){
+          inter.push('Yes')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.No===true){
+          inter.push('No')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+        if (data.YN===true){
+          inter.push('YN')
+          inds.push(true);
+        }
+        else
+          inds.push(false); 
+    
+          
+        app(currentUser, inter, inds, Post,false, Get)
+      }
 
 const AnketaProps = (props) => {
   const classes = useStyles();
-  let inter;
-  let inds;
-
-  const Submit = (app) => (data) => {
-
-    inter=[];
-    inds=[];
-
-    if (data.Web){
-        inter.push('Web')
-        inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.Gamedev===true){
-        inter.push('Gamedev')
-        inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.Mobile===true){
-      inter.push('Mobile')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.Robot===true){
-      inter.push('Robot')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.DevOps===true){
-      inter.push('DevOps')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.QA===true){
-      inter.push('QA')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.DataScience===true){
-      inter.push('DataScience')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-    
-    if (data.UI===true){
-      inter.push('UI')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.Java===true){
-      inter.push('Java')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.PHP===true){
-      inter.push('PHP')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.Python===true){
-      inter.push('Python')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.Csharp===true){
-      inter.push('Csharp')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.Cplus===true){
-      inter.push('Cplus')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-    
-    if (data.CSS===true){
-      inter.push('CSS')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.HTML===true){
-      inter.push('HTML')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.JavaScript===true){
-      inter.push('JavaScript')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.React===true){
-      inter.push('React')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-
-    if (data.Angular===true){
-      inter.push('Angular')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.Kotlin===true){
-      inter.push('Kotlin')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.hackathon===true){
-        inter.push('hackathon')
-        inds.push(true);
-    }
-    else
-        inds.push(false); 
-  
-    if (data.lecture===true){
-        inter.push('lecture')
-        inds.push(true);
-    }
-    else
-        inds.push(false);
-
-    if (data.conference===true){
-          inter.push('conference')
-          inds.push(true);
-    }
-    else
-        inds.push(false); 
-
-    if (data.onlinecourse===true){
-          inter.push('onlinecourse')
-          inds.push(true);
-    }
-    else
-      inds.push(false);
-      
-      
-    if (data.Стажировка===true){
-      inter.push('traineeship')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-      
-    if (data.forum===true){
-        inter.push('forum')
-        inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-      
-    if (data.training===true){
-      inter.push('training')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.webinar===true){
-        inter.push('webinar')
-        inds.push(true);
-    }
-    else
-        inds.push(false); 
-  
-    if (data.seminar===true){
-        inter.push('seminar')
-        inds.push(true);
-    }
-    else
-        inds.push(false); 
-   
-
-    if (data.offline){
-        inter.push('offline')
-        inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.online===true){
-        inter.push('online')
-        inds.push(true);
-    }
-    else
-      inds.push(false);   
-      
-      
-    if (data.moscow===true){
-      inter.push('moscow')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.petersburg===true){
-      inter.push('petersburg')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-      
-    if (data.Yes===true){
-      inter.push('Yes')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.No===true){
-      inter.push('No')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-    if (data.YN===true){
-      inter.push('YN')
-      inds.push(true);
-    }
-    else
-      inds.push(false); 
-
-      
-    app(props.currentUser, inter, inds, props.isPost, props.isGet)
-  }
 
 
   const SubmitButton = (app) => (data) => {
@@ -849,7 +849,7 @@ const AnketaProps = (props) => {
           Анкета регистрации
         </Typography>
        
-        <AnketaForm Ind={props.Ind} onSubmit={Submit(props.Anketa)}/>
+        <AnketaForm Ind={props.Ind} onSubmit={Submit(props.Anketa, props.currentUser, props.isPost, props.isGet)}/>
         <ButtonClear onSubmit={SubmitButtonClear(props.Anketa)}/>
 
        

@@ -22,7 +22,7 @@ const Event= (props) => {
 
   return (
     <React.Fragment>
-      <MainFeaturedPost title={props.Card.title} image_url={"https://source.unsplash.com/random/?programming,it"+props.Card.tags[0]}  />
+      <MainFeaturedPost title={props.Card.title} image_url={"https://source.unsplash.com/random/?programming,it"+props.Card.title}  />
 
       <Grid container spacing={5}  className={classes.mainGrid}>
 
@@ -33,8 +33,8 @@ const Event= (props) => {
               </Typography>
             </CardContent>
             </Card>
-
-        <Sidebar date={props.Card.startDate}  where={props.Card.location} price={props.Card.tags[1]}   />
+       <Sidebar date={props.Card.startDate} dateутв={props.Card.endDate} where={props.Card.tags[0]} price={props.Card.tags[2]} /> 
+        
       </Grid>
     </React.Fragment>
   );

@@ -71,7 +71,7 @@ export default function MainFeaturedPost(props) {
           <div className={classes.buttonsSide}>
            
           <FormControlLabel
-        control={<Checkbox  icon={<GradeRoundedIcon />} checkedIcon={<GradeRoundedIcon />} name="checkedH" size="large" />}
+        control={<Checkbox size="medium" icon={<GradeRoundedIcon />} checkedIcon={<GradeRoundedIcon />} name="checkedH"  />}
          />
             
           </div>

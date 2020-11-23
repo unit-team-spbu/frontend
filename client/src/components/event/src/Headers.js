@@ -67,10 +67,16 @@ const Headers = (props) => {
   const classes = useStyles();
   
     const SubmitButtonLK = (app) => (data) => {
-    app(props.currentUser)}
+    app(false, props.currentUser)}
 
     const SubmitButtonEvent = (app) => (data) => {
-      app(props.currentUser,[],true)}
+      if (props.currentUser.length>3){
+        app(true, props.currentUser)
+      }
+      else {
+      app(true, '')
+      }
+    }
 
     if (props.LK){
         debugger
@@ -86,7 +92,7 @@ const Headers = (props) => {
       <React.Fragment>
         <Toolbar className={classes.toolbar}>
 
-        <ButtonEvent onSubmit={SubmitButtonEvent(props.setlk)}/>
+        <ButtonEvent onSubmit={SubmitButtonEvent(props.setlk)} />
         
           <Typography
             component="h2"

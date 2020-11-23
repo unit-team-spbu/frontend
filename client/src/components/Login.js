@@ -108,8 +108,8 @@ const AuthForm = reduxForm({form: "auth"}) ((props)=>{
 const Login = (props) => {
   const classes = useStyles();
 
-const Submit = (app) => (data) => {
-  app(data.login, data.password)
+const Submit = (app, currentUser) => (data) => {
+  app(data.login, data.password, currentUser )
 }
 
   if (props.isLog){
@@ -133,7 +133,7 @@ const Submit = (app) => (data) => {
           </Typography>
         
 
-          <AuthForm onSubmit={Submit(props.setAuthorization)}/>
+          <AuthForm onSubmit={Submit(props.setAuthorization, props.currentUser)}/>
 
           <Grid container justify="flex-end">
               <Grid item>

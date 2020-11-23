@@ -285,7 +285,7 @@ const Filter = reduxForm({ form: "filter" }) ((props) => {
                   id="week"
                   component={renderCheckbox}
                   control={<Checkbox value="hak" size="small" color="secondary" />}
-                  label="На этой недели"
+                  label="На этой неделе"
                 />
               </Grid>
 

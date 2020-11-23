@@ -57,7 +57,14 @@ const Sidebar = (props) => {
           <ListItemIcon>
             <TodayIcon />
           </ListItemIcon>
-          <ListItemText primary="Дата" secondary={props.Card.startDate} />
+          <ListItemText primary="Начало мероприятия" secondary={props.Card.startDate} />
+        </ListItem>
+
+        <ListItem >
+          <ListItemIcon>
+            <TodayIcon />
+          </ListItemIcon>
+          <ListItemText primary="Конец мероприятия" secondary={props.Card.endDate} />
         </ListItem>
 
        
@@ -66,21 +73,24 @@ const Sidebar = (props) => {
           <ListItemIcon>
             <RoomOutlinedIcon />
           </ListItemIcon>
-          <ListItemText primary="Место"  secondary={props.Card.location} />
-        </ListItem>
-
+          { props.Card.tags[0]==='online' ? 
+          <ListItemText primary="Место" secondary={props.Card.tags[0]} />
+          :
+          <ListItemText primary="Место" secondary={props.Card.location} /> 
+          }
+          </ListItem> 
         <ListItem >
           <ListItemIcon>
             <MonetizationOnOutlinedIcon />
           </ListItemIcon>
-          <ListItemText primary="Стоимость"  secondary={props.Card.tags[1]} />
+          <ListItemText primary="Стоимость"  secondary={props.Card.tags[2]} />
         </ListItem>
 
         
       
       </List>
       <div className={classes.buttonsSide}>
-        <Button variant="contained" color="secondary" >Зарегистрироваться</Button>
+        <Button variant="contained" color="secondary">Зарегистрироваться</Button>
         
         <FormControlLabel
         control={<Checkbox icon={<ThumbUpAltOutlinedIcon />} checkedIcon={<ThumbUpAltOutlinedIcon />} name="checkedH" />}

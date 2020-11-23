@@ -48,7 +48,7 @@ const Header = (props) => {
   const classes = useStyles();
   
     const SubmitButtonLK = (app) => (data) => {
-    app(props.currentUser)}
+      app(false, props.currentUser)}
 
     if (props.LK){
         debugger

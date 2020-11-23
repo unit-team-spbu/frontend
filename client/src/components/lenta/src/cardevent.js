@@ -23,8 +23,8 @@ import { Grid, Hidden } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 700,
-    height: 430,
+    maxWidth: 280,
+    height: 300,
 
   },
   media: {
@@ -37,11 +37,6 @@ const useStyles = makeStyles((theme) => ({
     '& > *': {
     marginbottom: theme.spacing(3),
     }
-  },
-  style: 
-  {
-    height: 100, 
-    overflow: Hidden
   },
   buttonsSide: {
     '& > *': {
@@ -56,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 const Cardform = reduxForm({form: "card"})((props)=>{
   const classes = useStyles();
 
-  debugger
+
   return(
       <form className={classes.form} onSubmit={props.handleSubmit}>
 
@@ -64,13 +59,13 @@ const Cardform = reduxForm({form: "card"})((props)=>{
             <CardMedia
               component="img"
               //alt="Contemplative Reptile"
-              height="240"
+              height="140"
               image={props.image_url}
               //title="Contemplative Reptile"
             />
             <CardContent>
               
-              <Typography gutterBottom   variant="h5" component="h2" >
+              <Typography gutterBottom noWrap variant="h5" component="h2" >
                 {props.title}
               </Typography>
         
@@ -78,7 +73,7 @@ const Cardform = reduxForm({form: "card"})((props)=>{
                 {props.short_info}
               </Typography>
             </CardContent>
-          </CardActionArea>`
+          </CardActionArea>
 
 
         </form>
