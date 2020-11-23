@@ -148,10 +148,10 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <Field  component={renderCheckbox}
-                        name={"DataSciense"}
-                        id="DataSciense"
+                        name={"DataScience"}
+                        id="DataScience"
                         control={<Checkbox value="ds" checked={props.Ind[6]} color="secondary" />}
-                        label="DataSciense"
+                        label="DataScience"
                         znak={props.Ind[6]}
                     />
                 </Grid>
@@ -475,7 +475,7 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
     const ButtonExit = reduxForm({form: "exit"})((props)=>{
       return(
         <form  onSubmit={props.handleSubmit}>
-            <Button id="exit" name="exit"  type="submit"  variant="outlined"  size="small" >
+            <Button id="exit" name="exit"  type="submit"  variant="outlined"  size="medium" >
               Выйти
             </Button>
         </form>
@@ -503,7 +503,7 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
       const ButtonExitEvent = reduxForm({form: "exit"})((props)=>{
         return(
           <form  onSubmit={props.handleSubmit}>
-          <Button size="small"  id="itEvent"  name="itEvent" type="submit"  >
+          <Button size="medium"  id="itEvent"  name="itEvent" type="submit"  >
           <Typography
             component="h2"
             variant="h5"
@@ -521,124 +521,126 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
       let inter;
       let inds;
 
-      const Submit = (app,currentUser,Post,Get) => (data) => {
+      const Submit = (app,currentUser,Post,Get, tags) => (data) => {
 
         inter=[];
         inds=[];
     
-        if (data.Web){
+        if (data.Web || tags[0]){
             inter.push('Web')
             inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.Gamedev===true){
+        if (data.Gamedev===true || tags[1]){
             inter.push('Gamedev')
             inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.Mobile===true){
+        if (data.Mobile===true || tags[2]){
           inter.push('Mobile')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.Robot===true){
+        if (data.Robot===true || tags[3]){
           inter.push('Robot')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.DevOps===true){
+        if (data.DevOps===true || tags[4]){
           inter.push('DevOps')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.QA===true){
+        if (data.QA===true || tags[5]){
           inter.push('QA')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.DataScience===true){
+        if (data.DataScience===true || tags[6]){
+          debugger
           inter.push('DataScience')
           inds.push(true);
         }
-        else
+        else{
+        debugger
           inds.push(false); 
-        
-        if (data.UI===true){
+        }
+        if (data.UI===true || tags[7]){
           inter.push('UI')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.Java===true){
+        if (data.Java===true || tags[8]){
           inter.push('Java')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.PHP===true){
+        if (data.PHP===true || tags[9]){
           inter.push('PHP')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.Python===true){
+        if (data.Python===true || tags[10]){
           inter.push('Python')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.Csharp===true){
+        if (data.Csharp===true || tags[11]){
           inter.push('Csharp')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.Cplus===true){
+        if (data.Cplus===true || tags[12]){
           inter.push('Cplus')
           inds.push(true);
         }
         else
           inds.push(false); 
         
-        if (data.CSS===true){
+        if (data.CSS===true || tags[13]){
           inter.push('CSS')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.HTML===true){
+        if (data.HTML===true || tags[14]){
           inter.push('HTML')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.JavaScript===true){
+        if (data.JavaScript===true || tags[15]){
           inter.push('JavaScript')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.React===true){
+        if (data.React===true || tags[16]){
           inter.push('React')
           inds.push(true);
         }
@@ -646,42 +648,42 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
           inds.push(false); 
     
     
-        if (data.Angular===true){
+        if (data.Angular===true || tags[17]){
           inter.push('Angular')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.Kotlin===true){
+        if (data.Kotlin===true || tags[18]){
           inter.push('Kotlin')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.hackathon===true){
+        if (data.hackathon===true || tags[19]){
             inter.push('hackathon')
             inds.push(true);
         }
         else
             inds.push(false); 
       
-        if (data.lecture===true){
+        if (data.lecture===true || tags[20]){
             inter.push('lecture')
             inds.push(true);
         }
         else
             inds.push(false);
     
-        if (data.conference===true){
+        if (data.conference===true || tags[21]){
               inter.push('conference')
               inds.push(true);
         }
         else
             inds.push(false); 
     
-        if (data.onlinecourse===true){
+        if (data.onlinecourse===true || tags[22]){
               inter.push('onlinecourse')
               inds.push(true);
         }
@@ -689,14 +691,14 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
           inds.push(false);
           
           
-        if (data.Стажировка===true){
+        if (data.traineeship===true || tags[23]){
           inter.push('traineeship')
           inds.push(true);
         }
         else
           inds.push(false); 
           
-        if (data.forum===true){
+        if (data.forum===true || tags[24]){
             inter.push('forum')
             inds.push(true);
         }
@@ -704,21 +706,21 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
           inds.push(false); 
     
           
-        if (data.training===true){
+        if (data.training===true || tags[25]){
           inter.push('training')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.webinar===true){
+        if (data.webinar===true || tags[26]){
             inter.push('webinar')
             inds.push(true);
         }
         else
             inds.push(false); 
       
-        if (data.seminar===true){
+        if (data.seminar===true || tags[27]){
             inter.push('seminar')
             inds.push(true);
         }
@@ -726,14 +728,14 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
             inds.push(false); 
        
     
-        if (data.offline){
+        if (data.offline || tags[28]){
             inter.push('offline')
             inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.online===true){
+        if (data.online===true || tags[29]){
             inter.push('online')
             inds.push(true);
         }
@@ -741,14 +743,14 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
           inds.push(false);   
           
           
-        if (data.moscow===true){
+        if (data.moscow===true || tags[30]){
           inter.push('moscow')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.petersburg===true){
+        if (data.petersburg===true || tags[31]){
           inter.push('petersburg')
           inds.push(true);
         }
@@ -756,21 +758,21 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
           inds.push(false); 
     
           
-        if (data.Yes===true){
+        if (data.Yes===true || tags[32]){
           inter.push('Yes')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.No===true){
+        if (data.No===true || tags[33]){
           inter.push('No')
           inds.push(true);
         }
         else
           inds.push(false); 
     
-        if (data.YN===true){
+        if (data.YN===true || tags[34]){
           inter.push('YN')
           inds.push(true);
         }
@@ -829,10 +831,7 @@ const AnketaProps = (props) => {
         noWrap
         className={classes.toolbarTitle}
       >
-        <TextField id="outlined-basic" lineDirection="center"  variant="outlined" size="small" />
-        <IconButton>
-        <SearchIcon />
-      </IconButton>
+      
       </Typography>
 
       <ButtonExit onSubmit={SubmitButton(props.Anketa)}/>
@@ -849,7 +848,7 @@ const AnketaProps = (props) => {
           Анкета регистрации
         </Typography>
        
-        <AnketaForm Ind={props.Ind} onSubmit={Submit(props.Anketa, props.currentUser, props.isPost, props.isGet)}/>
+        <AnketaForm Ind={props.Ind} onSubmit={Submit(props.Anketa, props.currentUser, props.isPost, props.isGet, props.Ind)}/>
         <ButtonClear onSubmit={SubmitButtonClear(props.Anketa)}/>
 
        

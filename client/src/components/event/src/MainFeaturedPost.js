@@ -6,11 +6,34 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import GradeRoundedIcon from '@material-ui/icons/GradeRounded';
+import StarBorderTwoToneIcon from '@material-ui/icons/StarBorderTwoTone';
 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import { connect } from 'react-redux';
+import { Card } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    maxWidth: 40,
+    height: 40,
+    display: 'flex',
+    '& > *': {
+      margin: theme.spacing(1),
+      alignItems: 'right',
+      alignSelf: "end",
+      textAlign: "center"
+      
+      
+    },
+    margin: theme.spacing(1),
+    alignItems: 'right',
+    alignSelf: "end",
+    Align: "right",
+    position: 'right',
+
+
+  },
   mainFeaturedPost: {
     position: 'relative',
     backgroundColor: theme.palette.grey[800],
@@ -47,32 +70,33 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-export default function MainFeaturedPost(props) {
+const MainFeaturedPost= (props) => {
   const classes = useStyles();
-  const { title, image_url, short_info } = props;
-
+ 
   return (
-    <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${image_url})` }}>
-      {<img style={{ display: 'none' }} src={image_url} />}
+    <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${props.image_url})` }}>
+      {<img style={{ display: 'none' }} src={props.image_url} />}
       <div className={classes.overlay} />
       <Grid container>
         <Grid item md={6}>
           <div className={classes.mainFeaturedPostContent}>
-            <Typography component="h1" variant="h3" color="inherit" >
-              {title}
+            <Typography component="h1" variant="h4" color="inherit" >
+              {props.title}
             </Typography>
             <Typography variant="h6" color="inherit" paragraph>
-              {short_info}
+              {props.short_info}
             </Typography>
           </div>
         </Grid>
         <Grid item md={6} className={classes.buttonsSide}>
           <div className={classes.buttonsSide}>
-           
+
+         
           <FormControlLabel
-        control={<Checkbox size="medium" icon={<GradeRoundedIcon />} checkedIcon={<GradeRoundedIcon />} name="checkedH"  />}
+        control={<Checkbox  fontSize="large" icon={<StarBorderTwoToneIcon fontSize="large" />} checkedIcon={<StarBorderTwoToneIcon   fontSize="large"/>} name="checkedH"  />}
          />
+      
+
             
           </div>
         </Grid>
@@ -82,7 +106,13 @@ export default function MainFeaturedPost(props) {
   );
 }
 
-MainFeaturedPost.propTypes = {
-  post: PropTypes.object,
-};
+const mapStateProps = (state) => ({
+  message: state.user.message,
+  currentUser: state.user.currentUser,
+  interests: state.user.interests,
+  lenta: state.user.lenta,
+  iscard: state.user.iscard,
+  Card:  state.user.Card
+})
 
+export default connect(mapStateProps, {})(MainFeaturedPost)
