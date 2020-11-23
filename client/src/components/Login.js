@@ -48,63 +48,22 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const validate = values => {
-  const errors = {}
- 
-  /*if (values.firstName.length > 12) {
-    errors.firstName = 'Максимальная длина 12'
-  }*/
-  /*if (values.lastName.length > 15) {
-    errors.lastName = 'Максимальная длина 15'
-  }*/
-  if (
-    values.login &&
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.login)
-  ) {
-    errors.login = 'Неверный адрес почты'
-  }
-  
-  /*if (values.password.length < 8) {
-    errors.firstName = 'Минимальная длина 8'
-  }*/
+const renderTextField = ({
+  label, input, 
+  meta:{ touched, invalid, error},
+    ...custom}) => (
+      <TextField
+      label={label}
+      placeholder={label}
+      error={touched && invalid} 
+      helperText={touched && error}
+      {...input}
+      {...custom}/>
+    )
 
- /* const beginWithoutDigit = /^\D.*$/
-  const withoutSpecialChars = /^[^-() /]*$/
-  const containsLetters = /^.*[a-zA-Z]+.*$/
-  const withoutSpaces = /^[\S]$/
 
-if( beginWithoutDigit.test(values.password) &&
-    withoutSpecialChars.test(values.password) &&
-    containsLetters.test(values.password) ){
-} else {
-    errors.login = 'Необходимо наличие: цифор,спец.символов и латинских букв'
-}
-
-if( withoutSpaces.test(values.password)){
-} else {
-    errors.login = 'Пробелы недопустимы'
-}
-*/
-
-  return errors
-}
-
-   const renderTextField = ({
-      label, input, 
-      meta:{ touched, invalid, error},
-        ...custom}) => (
-          <TextField
-          label={label}
-          placeholder={label}
-          error={touched && invalid} 
-          helperText={touched && error}
-          {...input}
-          {...custom}/>
-        )
-
-const AuthForm = reduxForm({form: "auth", validate}) ((props)=>{
+const AuthForm = reduxForm({form: "auth"}) ((props)=>{
     const classes = useStyles();
-    const {  pristine, submitting} = props
     return(
       <form className={classes.form} onSubmit={props.handleSubmit}>
             <Field component={renderTextField}
@@ -132,7 +91,6 @@ const AuthForm = reduxForm({form: "auth", validate}) ((props)=>{
             <Button
               type="submit"
               fullWidth
-              disabled={ submitting}
               variant="contained"
               color="primary"
               className={classes.submit}

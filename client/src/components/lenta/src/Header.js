@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(1),
-    align: 'right'
   },
 }));
 
@@ -38,7 +37,7 @@ const ButtonLK = reduxForm({form: "lk"})((props)=>{
   const classes = useStyles();
   return(
     <form  onSubmit={props.handleSubmit}>
-    <Button variant="outlined" type="submit" className={classes.button} size="medium" >
+    <Button variant="outlined" type="submit" className={classes.button} size="small" >
           Личный кабинет   
     </Button>
   </form>
@@ -61,7 +60,7 @@ const Header = (props) => {
       <React.Fragment>
         <Toolbar className={classes.toolbar}>
 
-          <Button size="medium" component={Link} to="/lenta" > 
+          <Button size="small" component={Link} to="/lenta" > 
           <Typography
             component="h2"
             variant="h5"
@@ -81,13 +80,15 @@ const Header = (props) => {
             noWrap
             className={classes.toolbarTitle}
           >
-      
+            <TextField id="outlined-basic" lineDirection="center"  variant="outlined" size="small" />
+            <IconButton>
+            <SearchIcon />
+            </IconButton>
           </Typography>
-          
         
         {
           props.isLog ? <ButtonLK onSubmit={SubmitButtonLK(props.setlk)}/> : 
-          <Button variant="outlined"  align="right" size="medium"   className={classes.button} component={Link} to="/welcome">
+          <Button variant="outlined" size="small"  component={Link} to="/welcome">
           Войти
           </Button>
         }
