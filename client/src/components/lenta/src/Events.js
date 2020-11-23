@@ -47,12 +47,12 @@ const Events = (props) => {
 
   return (
     <React.Fragment>
-      <Grid container spacing={5} className={classes.mainGrid}>
-          <Grid container item xs={9} spacing={4}>
+      <Grid container spacing={3} className={classes.mainGrid}>
+          <Grid container item xs={9} spacing={3}>
             {props.lenta.map((event) => (
 
               <Grid item xs={3} sm={4} key={event._id}>
-              <CardEvent title={event.title}  image_url=/*{event.image_url}*/{"https://source.unsplash.com/random/?programming,it,"+event.title}
+              <CardEvent title={event.title}  image_url={"https://source.unsplash.com/random/?programming,it,"+event.title}
               short_info= {event.startDate}  id={event._id}>
               </CardEvent>
 

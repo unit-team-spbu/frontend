@@ -40,28 +40,72 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const renderTextField = ({
-  label, input, 
-  meta:{ touched, invalid, error},
-    ...custom}) => (
-      <TextField
-      label={label}
-      placeholder={label}
-      error={touched && invalid} 
-      helperText={touched && error}
-      {...input}
-      {...custom}/>
-    )
+
   
 
-const RegForm = reduxForm({form: "reg"})((props)=>{
+const validate = values => {
+  const errors = {}
+ 
+  /*if (values.firstName.length > 12) {
+    errors.firstName = 'Максимальная длина 12'
+  }*/
+  /*if (values.lastName.length > 15) {
+    errors.lastName = 'Максимальная длина 15'
+  }*/
+  if (
+    values.login &&
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.login)
+  ) {
+    errors.login = 'Неверный адрес почты'
+  }
+
+ /* if (values.password.length < 8) {
+    errors.firstName = 'Минимальная длина 8'
+  }*/
+
+ /* const beginWithoutDigit = /^\D.*$/
+  const withoutSpecialChars = /^[^-() /]*$/
+  const containsLetters = /^.*[a-zA-Z]+.*$/
+  const withoutSpaces = /^[\S]$/
+
+if( beginWithoutDigit.test(values.password) &&
+    withoutSpecialChars.test(values.password) &&
+    containsLetters.test(values.password) ){
+} else {
+    errors.login = 'Необходимо наличие: цифор,спец.символов и латинских букв'
+}
+
+if( withoutSpaces.test(values.password)){
+} else {
+    errors.login = 'Пробелы недопустимы'
+}
+*/
+
+  return errors
+}
+
+   const renderTextField = ({
+      label, input, 
+      meta:{ touched, invalid, error},
+        ...custom}) => (
+          <TextField
+          label={label}
+          placeholder={label}
+          error={touched && invalid} 
+          helperText={touched && error}
+          {...input}
+          {...custom}/>
+        )
+
+const RegForm = reduxForm({form: "reg", validate})((props)=>{
   const classes = useStyles();
+  const {  pristine, submitting} = props
   return(
     <form className={classes.form} onSubmit={props.handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={5}>
               <Field component={renderTextField}
-                    autoComplete="fname"
+                    autoComplete="firstName"
                     name="firstName"
                     variant="outlined"
                     required
@@ -119,6 +163,7 @@ const RegForm = reduxForm({form: "reg"})((props)=>{
             type="submit"
             fullWidth
             variant="contained"
+            disabled={submitting}
             color="primary"
             className={classes.submit}>
             Начать
@@ -173,4 +218,4 @@ const mapStateToProps = (state) => ({
     message: state.user.message
 })
 
-export default connect(mapStateToProps, {setRegistration})(SignUp)
+export default connect(mapStateToProps, {setRegistration })(SignUp)

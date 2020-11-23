@@ -28,6 +28,11 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     backgroundColor: theme.palette.grey[200],
   },
+  sidebarAbout: {
+    backgroundColor: theme.palette.grey[200],  
+    paddingLeft: theme.spacing(2),
+  },
+
   buttonsSide: {
     '& > *': {
       margin: theme.spacing(1),
@@ -46,7 +51,7 @@ const Sidebar = (props) => {
   return (
     <Grid item xs={12} md={4}>
       <Paper elevation={3} className={classes.sidebarAboutBox}>
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="h6" className={classes.sidebarAbout} gutterBottom>
           {"Информация о событии"}
         </Typography>
 
