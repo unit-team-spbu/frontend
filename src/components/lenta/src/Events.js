@@ -5,17 +5,7 @@ import MainFeaturedPost from './MainFeaturedPost';
 import Main from './Main';
 import Sidebar from './Sidebar';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import markdown from './text'
-import card from '@material-ui/core/card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import GradeRoundedIcon from '@material-ui/icons/GradeRounded';
-import IconButton from '@material-ui/core/IconButton';
+
 import CardEvent from './cardevent';
 
 import {connect} from 'react-redux';
