@@ -70,7 +70,12 @@ const Sidebar = (props) => {
           <ListItemIcon>
             <TodayIcon />
           </ListItemIcon>
-          <ListItemText primary="Конец мероприятия" secondary={props.Card.endDate} />
+          { props.Card.endDate ? 
+           <ListItemText primary="Конец мероприятия" secondary={props.Card.endDate} />
+          :
+          <ListItemText primary="Конец мероприятия" secondary={props.Card.startDate} /> 
+          }
+         
         </ListItem>
 
        
