@@ -41,8 +41,8 @@ export const AnketaGet = (token) => {
 }
 
 export const CardGet = (token, id) => {
-    if (token.length>3) {return ms.get("feed/"+id+'/', {params: {token}}).then(res=>res.data) }
+    if (token.length>3) {return ms.get("feed/"+id+"/", {params: {token}}).then(res=>res.data) }
     else 
-    return ms.get("feed/"+id+'/', {}).then(res=>res.data)
+    return ms.get("feed/"+id+"/", {}).then(res=>res.data)
 }
 
