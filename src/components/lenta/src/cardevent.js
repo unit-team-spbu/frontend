@@ -94,7 +94,8 @@ const CardEvent = (props) => {
   if (props.iscard){
     return <Redirect to="/event"/>
   }
-
+ 
+debugger
   return (
     <Card className={classes.root}>
 
@@ -105,12 +106,16 @@ const CardEvent = (props) => {
 
       <CardActions /*disableSpacing*/>
       <div  className={classes.controls}>
-        <Button size="medium" color="primary"  >
-          Зарегистрироваться
-        </Button>
-        <FormControlLabel
-        control={<Checkbox icon={<GradeRoundedIcon />} checkedIcon={<GradeRoundedIcon />} name="checkedH" />}
-      />
+        {props.currentUser.length>3 ?
+        <Button color="default" size="medium"   >
+        в избранное
+        </Button> :
+          <Button color="default" size="medium" onClick={() => {alert('Вам необходимо войти на сайт для добавления мероприятия в избранное') }} 
+         >
+            в избранное
+          </Button>
+        }
+      <GradeRoundedIcon color="secondary"/>
       </div>
       </CardActions>
      

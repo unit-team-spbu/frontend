@@ -38,6 +38,13 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  button: {
+    //marginTop: theme.spacing(8),
+    //display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+  },
+
 }));
 
 
@@ -198,7 +205,7 @@ const SignUp = (props) => {
  
         <RegForm onSubmit={Submit(props.setRegistration)}/>
 
-        <Grid container justify="flex-end">
+        <Grid container className={classes.button} justify="flex-end">
           <Grid item>
             <Button  size="small" color="primary" component={Link} to="/welcome">
               Уже зарегистрированы? Войти

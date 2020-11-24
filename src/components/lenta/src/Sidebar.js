@@ -74,16 +74,6 @@ const Filter = reduxForm({ form: "filter" }) ((props) => {
 
               <Grid item xs={12} sm={12}>
                 <Field
-                  name={"offline"}
-                  id="offline"
-                  component={renderCheckbox}
-                  control={<Checkbox value="hak" size="small" color="secondary" />}
-                  label="Очное"
-                />
-              </Grid>
-
-              <Grid item xs={12} sm={12}>
-                <Field
                   name={"online"}
                   id="online"
                   component={renderCheckbox}
@@ -103,15 +93,6 @@ const Filter = reduxForm({ form: "filter" }) ((props) => {
         </Typography>
               </Grid>
 
-              <Grid item xs={12} sm={12}>
-                <Field
-                  name={"free"}
-                  id="free"
-                  component={renderCheckbox}
-                  control={<Checkbox value="hak" size="small" color="secondary" />}
-                  label="Бесплатные"
-                />
-              </Grid>
 
               <Grid item xs={12} sm={12}>
                 <Field
@@ -119,43 +100,10 @@ const Filter = reduxForm({ form: "filter" }) ((props) => {
                    id="paid"
                   component={renderCheckbox}
                   control={<Checkbox value="hak" size="small" color="secondary" />}
-                  label="Платные"
+                  label="Платное"
                 />
               </Grid>
             </Grid>
-         
-
-
-         
-            <Grid container spacing={0}>
-              <Grid item xs={12} sm={12}>
-                <Typography align="left" component="h1" variant="h6">
-                  Город
-        </Typography>
-              </Grid>
-
-              <Grid item xs={12} sm={12}>
-                <Field
-                   name={"petersburg"}
-                   id="petersburg"
-                  component={renderCheckbox}
-                  control={<Checkbox value="hak" size="small" color="secondary" />}
-                  label="Санкт-Петербург"
-                />
-              </Grid>
-
-              <Grid item xs={12} sm={12}>
-                <Field
-                  name={"moscow"}
-                  id="moscow"
-                  component={renderCheckbox}
-                  control={<Checkbox value="hak" size="small" color="secondary" />}
-                  label="Москва"
-                />
-              </Grid>
-            </Grid>
-       
-
          
             <Grid container spacing={0}>
               <Grid item xs={12} sm={12}>
@@ -176,21 +124,22 @@ const Filter = reduxForm({ form: "filter" }) ((props) => {
               </Grid>
               <Grid item xs={10} sm={6}>
                 <Field
-                  name={"lecture"}
-                  id="lecture"
+                  name={"conference"}
+                  id="conference"
                   component={renderCheckbox}
-                  control={<Checkbox value="lek" size="small" color="secondary" />}
-                  label="Лекция"
+                  control={<Checkbox value="semin" size="small" color="secondary" />}
+                  label="Конференция"
                 />
               </Grid>
+             
 
               <Grid item xs={10} sm={6} >
                 <Field
-                  name={"training"}
-                  id="training"
+                  name={"forum"}
+                  id="forum"
                   component={renderCheckbox}
                   control={<Checkbox value="konf" size="small" color="secondary" />}
-                  label="Тренинг"
+                  label="Форум"
                 />
               </Grid>
               <Grid item xs={10} sm={6}>
@@ -204,31 +153,23 @@ const Filter = reduxForm({ form: "filter" }) ((props) => {
               </Grid>
               <Grid item xs={10} sm={6}>
                 <Field
-                  name={"traineeship"}
-                  id="traineeship"
+                  name={"meetup"}
+                  id="meetup"
                   component={renderCheckbox}
                   control={<Checkbox value="sta" size="small" color="secondary" />}
-                  label="Стажировка"
+                  label="Meet up"
                 />
               </Grid>
               <Grid item xs={10} sm={6}>
                 <Field
-                  name={"forum"}
+                  name={"master"}
                   component={renderCheckbox}
                   control={<Checkbox value="for" size="small" color="secondary" />}
-                  label="Форум"
-                  id="forum"
+                  label="Мастер-класс"
+                  id="master"
                 />
               </Grid>
-              <Grid item xs={10} sm={6}>
-                <Field
-                  name={"seminar"}
-                  id="seminar"
-                  component={renderCheckbox}
-                  control={<Checkbox value="tren" size="small" color="secondary" />}
-                  label="Семинар"
-                />
-              </Grid>
+             
               <Grid item xs={10} sm={6}>
                 <Field
                   name={"onlinecourse"}
@@ -240,62 +181,20 @@ const Filter = reduxForm({ form: "filter" }) ((props) => {
               </Grid>
               <Grid item xs={10} sm={6}>
                 <Field
-                  name={"conference"}
-                  id="conference"
+                  name={"vystav"}
+                  id="vystav"
                   component={renderCheckbox}
-                  control={<Checkbox value="semin" size="small" color="secondary" />}
-                  label="Конференция"
+                  control={<Checkbox value="vystav" size="small" color="secondary" />}
+                  label="Выставка"
                 />
               </Grid>
-            </Grid>
-     
-
-
-         
-            <Grid container spacing={0}>
-              <Grid item xs={12} sm={12}>
-                <Typography align="left" component="h1" variant="h6">
-                  Когда
-        </Typography>
-              </Grid>
-
-              <Grid item xs={12} sm={12}>
+              <Grid item xs={10} sm={6}>
                 <Field
-                  name={"today"}
-                  id="today"
+                  name={"sorevnovan"}
+                  id="sorevnovan"
                   component={renderCheckbox}
-                  control={<Checkbox value="hak" size="small" color="secondary" />}
-                  label="Сегодня"
-                />
-              </Grid>
-
-              <Grid item xs={12} sm={12}>
-                <Field
-                  name={"tomorrow"}
-                  id="tomorrow"
-                  component={renderCheckbox}
-                  control={<Checkbox value="hak" size="small" color="secondary" />}
-                  label="Завтра"
-                />
-              </Grid>
-
-              <Grid item xs={12} sm={12}>
-                <Field
-                  name={"week"}
-                  id="week"
-                  component={renderCheckbox}
-                  control={<Checkbox value="hak" size="small" color="secondary" />}
-                  label="На этой неделе"
-                />
-              </Grid>
-
-              <Grid item xs={12} sm={12}>
-                <Field
-                  name={"month"}
-                  id="month"
-                  component={renderCheckbox}
-                  control={<Checkbox value="hak" size="small" color="secondary" />}
-                  label="В этом месяце"
+                  control={<Checkbox value="tren" size="small" color="secondary" />}
+                  label="Соревнование"
                 />
               </Grid>
             </Grid>
@@ -323,62 +222,42 @@ const  Sidebar = (props) => {
 
     let list=[];
 
-    if (data.offline===true)
-      list.push('offline')
 
     if (data.online===true)
       list.push('online')
     
-    if (data.free===true)
-      list.push('free')
 
     if (data.paid===true)
       list.push('paid')
 
-    if (data.petersburg===true)
-      list.push('petersburg')
-
-    if (data.moscow===true)
-      list.push('moscow')
 
     if (data.hackathon===true)
-      list.push('hackathon')
+      list.push('хакатон')
 
-    if (data.lecture===true)
-      list.push('lecture')
-
-    if (data.training===true)
-      list.push('training')
-    
-    if (data.webinar===true)
-      list.push('webinar')
-
-    if (data.traineeship===true)
-      list.push('traineeship')
+    if (data.vystav===true)
+      list.push('выставка')
 
     if (data.forum===true)
-      list.push('forum')
+      list.push('форум')
+    
+    if (data.webinar===true)
+      list.push('вебинар')
 
-    if (data.seminar===true)
-      list.push('seminar')
+    if (data.master===true)
+      list.push('мастер-класс')
+
+    if (data.sorevnovan===true)
+      list.push('соревнование')
+
+    if (data.meetup===true)
+      list.push('митап')
 
     if (data.onlinecourse===true)
-      list.push('onlinecourse')
+      list.push('курс')
 
     if (data.conference===true)
-      list.push('conference')
+      list.push('конференция')
 
-    if (data.today===true)
-      list.push('today')
-
-    if (data.tomorrow===true)
-      list.push('tomorrow')
-
-    if (data.week===true)
-      list.push('week')
-
-    if (data.month===true)
-      list.push('month')
       
     app(props.currentUser, list)
   }

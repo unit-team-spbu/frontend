@@ -90,11 +90,6 @@ const MainFeaturedPost= (props) => {
         </Grid>
         <Grid item md={6} className={classes.buttonsSide}>
           <div className={classes.buttonsSide}>
-
-         
-          <FormControlLabel
-        control={<Checkbox  fontSize="large" icon={<StarBorderTwoToneIcon fontSize="large" />} checkedIcon={<StarBorderTwoToneIcon   fontSize="large"/>} name="checkedH"  />}
-         />
       
 
             

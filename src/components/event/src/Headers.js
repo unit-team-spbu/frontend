@@ -38,7 +38,7 @@ const ButtonLK = reduxForm({form: "lk"})((props)=>{
   const classes = useStyles();
   return(
     <form  onSubmit={props.handleSubmit}>
-    <Button variant="outlined" type="submit" className={classes.button} size="medium" >
+    <Button variant="outlined" color="default" type="submit" className={classes.button} size="medium" >
           Личный кабинет   
     </Button>
   </form>
@@ -49,8 +49,9 @@ const ButtonEvent = reduxForm({form: "event"})((props)=>{
   const classes = useStyles();
   return(
     <form  onSubmit={props.handleSubmit}>
-    <Button size="medium"   type="submit"> 
+    <Button size="medium"   color="default" type="submit"> 
           <Typography
+       
             component="h2"
             variant="h5"
             color="inherit"
@@ -108,7 +109,7 @@ const Headers = (props) => {
         
         {
           props.isLog ? <ButtonLK onSubmit={SubmitButtonLK(props.setlk)}/> : 
-          <Button variant="outlined" size="medium" className={classes.button}  component={Link} to="/welcome">
+          <Button variant="outlined" color="default" size="medium" className={classes.button}  component={Link} to="/welcome">
           Войти
           </Button>
         }

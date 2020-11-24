@@ -142,7 +142,7 @@ const isEv = (isEv) => ({type: SET_EV, isEv});
 export const setRegistration = (login, password) => dispatch => {
     regAPI(login, password).then(res=>{
         dispatch(setAuth(true))
-        alert(res.message) 
+        //alert(res.message) 
         debugger
     }, err=>{
         debugger

@@ -29,7 +29,8 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-  },  paper: {
+  },  
+  paper: {
     margin: theme.spacing(8, 4),
     display: 'flex',
     flexDirection: 'column',
@@ -45,6 +46,14 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+  },
+  button: {
+    
+    //marginTop: theme.spacing(1),
+    //display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+   
   },
 }));
 
@@ -177,9 +186,10 @@ const Submit = (app, currentUser) => (data) => {
 
           <AuthForm onSubmit={Submit(props.setAuthorization, props.currentUser)}/>
 
-          <Grid container justify="flex-end">
+         
+          <Grid container className={classes.button}  justify="flex-end">
               <Grid item>
-                <Button  size="small" color="primary" component={Link} to="/Signup">
+                <Button  size="small"  color="primary" component={Link} to="/Signup">
                   Нет учетной записи? Регистрация
                 </Button>
               </Grid>

@@ -47,11 +47,11 @@ const useStyles = makeStyles((theme) => ({
         flexShrink: 0,
       },
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(2),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginBottom: theme.spacing(10),
+    //marginBottom: theme.spacing(1),
   },
   avatar: {
     margin: theme.spacing(1),
@@ -64,6 +64,10 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 3, 2),
+  },
+  button: {
+    //margin: theme.spacing(1),
+    align: 'justify'
   },
 }));
 
@@ -454,7 +458,7 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                 </Grid>
             </Grid>
     
-                <Grid container spacing={20}  justify="center">
+            <Grid  className={classes.paper}  alignItems="center" justify="center">
                     <Button
                     id="save"
                     variant="contained"
@@ -462,11 +466,11 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                     color="primary"
                     size="large"
                     startIcon={<SaveIcon />}
-                    className={classes.margin}
+                    className={classes.button}
                     >
                     Сохранить       
                     </Button>
-                </Grid>
+              </Grid>
 
         </form>
         )
@@ -475,7 +479,7 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
     const ButtonExit = reduxForm({form: "exit"})((props)=>{
       return(
         <form  onSubmit={props.handleSubmit}>
-            <Button id="exit" name="exit"  type="submit"  variant="outlined"  size="medium" >
+            <Button id="exit" name="exit"  color="default" type="submit"  variant="outlined"  size="medium" >
               Выйти
             </Button>
         </form>
@@ -503,7 +507,7 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
       const ButtonExitEvent = reduxForm({form: "exit"})((props)=>{
         return(
           <form  onSubmit={props.handleSubmit}>
-          <Button size="medium"  id="itEvent"  name="itEvent" type="submit"  >
+          <Button size="medium" color="default" id="itEvent"  name="itEvent" type="submit"  >
           <Typography
             component="h2"
             variant="h5"

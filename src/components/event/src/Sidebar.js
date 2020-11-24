@@ -13,6 +13,7 @@ import TodayIcon from '@material-ui/icons/Today';
 import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutlined';
 import Button from '@material-ui/core/Button';
+import GradeRoundedIcon from '@material-ui/icons/GradeRounded';
 import IconButton from '@material-ui/core/IconButton';
 import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
 import ThumbDownAltOutlinedIcon from '@material-ui/icons/ThumbDownAltOutlined';
@@ -95,15 +96,14 @@ const Sidebar = (props) => {
       
       </List>
       <div className={classes.buttonsSide}>
-        <Button variant="contained" color="secondary">Зарегистрироваться</Button>
+        {
+          props.currentUser.length>3 ? <Button variant="contained" color="secondary">в избранное</Button> :
+          <Button variant="contained" 
+          onClick={() => {alert('Вам необходимо войти на сайт для добавления мероприятия в избранное') }}  
+          color="secondary">Добавить в избранное</Button>
+
+        }
         
-        <FormControlLabel
-        control={<Checkbox icon={<ThumbUpAltOutlinedIcon />} checkedIcon={<ThumbUpAltOutlinedIcon />} name="checkedH" />}
-      />
-        
-        <FormControlLabel
-        control={<Checkbox icon={<ThumbDownAltOutlinedIcon />} checkedIcon={<ThumbDownAltOutlinedIcon />} name="checkedH" />}
-      />
         </div>
 
       </Paper>  
