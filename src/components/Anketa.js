@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
     //margin: theme.spacing(1),
     align: 'justify'
   },
-}));
+}));  
 
 const renderCheckbox = ({ input, label, znak }) => (
   <div>
@@ -77,7 +77,7 @@ const renderCheckbox = ({ input, label, znak }) => (
     control={
       <Checkbox
         checked={znak ? true : input.value}
-        onChange={input.onChange}
+        onChange={ input.onChange }
       />
     }
     label={label}
@@ -85,9 +85,12 @@ const renderCheckbox = ({ input, label, znak }) => (
 </div>
 )
 
+
 const AnketaForm = reduxForm({form: "anketa"})((props)=>{
-    const classes = useStyles();
+    const classes = useStyles(); 
+    
     return(
+     
         <form className={classes.form} onSubmit={props.handleSubmit}>
           
             <Grid container spacing={0}>
@@ -175,7 +178,7 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
             <Grid container spacing={0}>
                 <Grid item xs={12} sm={12}>
                     <Typography  align="left" component="h1" variant="h6" gutterBottom>
-                        1) Интересующии вас языки программирования
+                        2) Интересующии вас языки программирования
                     </Typography>         
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -283,7 +286,7 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
             <Grid container spacing={0}>
                 <Grid item xs={12} sm={12}>
                     <Typography  align="left" component="h1" variant="h6">
-                        1) Интересующии вас мероприятия IT
+                        3) Интересующии вас мероприятия IT
                     </Typography>         
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -374,7 +377,7 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
             <Grid container spacing={0}>
                 <Grid item xs={12} sm={12}>
                     <Typography  align="left" component="h1"  variant="h6" gutterBottom>
-                        1) Предпочтительный формат
+                        4) Предпочтительный формат
                     </Typography>         
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -400,7 +403,7 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
             <Grid container spacing={0}>
                 <Grid item xs={12} sm={12}>
                     <Typography  align="left" component="h1"  variant="h6" gutterBottom>
-                        1) Предпочтительный город
+                        5) Предпочтительный город
                     </Typography>         
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -426,7 +429,7 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
             <Grid container spacing={0}>
                 <Grid item xs={12} sm={12}>
                     <Typography  align="left" component="h1" variant="h6" >
-                        1) Интересует ли вас что-то новое?
+                        6) Интересует ли вас что-то новое?
                     </Typography>         
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -526,7 +529,7 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
       let inds;
 
       const Submit = (app,currentUser,Post,Get, tags) => (data) => {
-
+        
         inter=[];
         inds=[];
     
@@ -818,6 +821,7 @@ const AnketaProps = (props) => {
     return <Redirect to="/Anketa"/>
     
   }
+
 
   return (
 

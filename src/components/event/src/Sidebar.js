@@ -79,7 +79,7 @@ const Sidebar = (props) => {
           <ListItemIcon>
             <RoomOutlinedIcon />
           </ListItemIcon>
-          { props.Card.tags[0]==='online' ? 
+          { props.Card.tags[0]===('online') ? 
           <ListItemText primary="Место" secondary={props.Card.tags[0]} />
           :
           <ListItemText primary="Место" secondary={props.Card.location} /> 
@@ -89,7 +89,12 @@ const Sidebar = (props) => {
           <ListItemIcon>
             <MonetizationOnOutlinedIcon />
           </ListItemIcon>
-          <ListItemText primary="Стоимость"  secondary={props.Card.tags[2]} />
+          { props.Card.tags[2]===('paid') ? 
+          <ListItemText primary="Стоимость" secondary="Paid" />
+          :
+          <ListItemText primary="Стоимость" secondary="Free" /> 
+          }
+         
         </ListItem>
 
         
