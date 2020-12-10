@@ -188,10 +188,18 @@ const Submit = (app, currentUser) => (data) => {
           <AuthForm onSubmit={Submit(props.setAuthorization, localStorage.getItem('token'))}/>
 
          
+     
           <Grid container className={classes.button}  justify="flex-end">
               <Grid item>
                 <Button  size="small"  color="primary" component={Link} to="/Signup">
                   Нет учетной записи? Регистрация
+                </Button>
+              </Grid>
+            </Grid>
+            <Grid container className={classes.button}  justify="flex-end">
+              <Grid item>
+                <Button  size="small"  color="primary" component={Link} to="/lenta">
+                 IT EVENTS
                 </Button>
               </Grid>
             </Grid>

@@ -145,6 +145,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="robot" color="secondary" checked={props.Ind[3]} />}
                         label="Робототехника"
                         znak={props.Ind[3]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {3}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -154,6 +157,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="devops" checked={props.Ind[4]} color="secondary" />}
                         label="DevOps"
                         znak={props.Ind[4]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {4}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -163,6 +169,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="qa" checked={props.Ind[5]} color="secondary" />}
                         label="QA"
                         znak={props.Ind[5]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {5}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -172,6 +181,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="ds" checked={props.Ind[6]} color="secondary" />}
                         label="DataScience"
                         znak={props.Ind[6]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {6}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -181,6 +193,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="ui" checked={props.Ind[7]}  color="secondary" />}
                         label="UI/UX"
                         znak={props.Ind[7]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {7}
                     />
                 </Grid>
             </Grid>
@@ -200,6 +215,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="java" checked={props.Ind[8]} color="secondary" />}
                         label="Java"
                         znak={props.Ind[8]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {8}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -209,6 +227,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="php" checked={props.Ind[9]} color="secondary" />}
                         label="PHP"
                         znak={props.Ind[9]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {9}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -218,6 +239,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="python" checked={props.Ind[10]} color="secondary" />}
                         label="Python"
                         znak={props.Ind[10]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {10}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -227,6 +251,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="ch" checked={props.Ind[11]} color="secondary" />}
                         label="C#"
                         znak={props.Ind[11]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {11}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -236,6 +263,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="c" checked={props.Ind[12]} color="secondary" />}
                         label="C++"
                         znak={props.Ind[12]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {12}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -245,6 +275,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="css" checked={props.Ind[13]} color="secondary" />}
                         label="CSS"
                         znak={props.Ind[13]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {13}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -254,6 +287,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="html" checked={props.Ind[14]} color="secondary" />}
                         label="HTML"
                         znak={props.Ind[14]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {14}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -263,6 +299,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="jvs" checked={props.Ind[15]} color="secondary" />}
                         label="JavaScript"
                         znak={props.Ind[15]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {15}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -272,6 +311,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="react" checked={props.Ind[16]} color="secondary" />}
                         label="React"
                         znak={props.Ind[16]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {16}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -281,6 +323,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="ang" checked={props.Ind[17]} color="secondary" />}
                         label="Angular"
                         znak={props.Ind[17]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {17}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -290,6 +335,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="kotl" checked={props.Ind[18]} color="secondary" />}
                         label="Kotlin"
                         znak={props.Ind[18]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {18}
                     />
                 </Grid>
             </Grid>
@@ -308,6 +356,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="hak" checked={props.Ind[19]} color="secondary" />}
                         label="Хакатон"
                         znak={props.Ind[19]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {19}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -317,6 +368,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="lek" checked={props.Ind[20]} color="secondary" />}
                         label="Лекция"
                         znak={props.Ind[20]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {20}
                     />
                 </Grid>
                 <Grid item xs={12}sm={4} >
@@ -326,6 +380,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="konf" checked={props.Ind[21]} color="secondary" />}
                         label="Конференция"
                         znak={props.Ind[21]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {21}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -335,6 +392,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="onl" checked={props.Ind[22]} color="secondary" />}
                         label="Онлайн-курс"
                         znak={props.Ind[22]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {22}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -344,6 +404,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="sta" checked={props.Ind[23]} color="secondary" />}
                         label="Стажировка"
                         znak={props.Ind[23]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {23}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -353,6 +416,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="for"checked={props.Ind[24]} color="secondary" />}
                         label="Форум"
                         znak={props.Ind[24]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {24}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -362,6 +428,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="tren" checked={props.Ind[25]} color="secondary" />}
                         label="Тренинг"
                         znak={props.Ind[25]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {25}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -371,6 +440,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="webin" checked={props.Ind[26]} color="secondary" />}
                         label="Вебинар"
                         znak={props.Ind[26]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {26}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -380,6 +452,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="semin" checked={props.Ind[27]} color="secondary" />}
                         label="Семинар"
                         znak={props.Ind[27]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {27}
                     />
                 </Grid>
             </Grid>
@@ -399,6 +474,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="ochno" checked={props.Ind[28]} color="secondary" />}
                         label="Очно"
                         znak={props.Ind[28]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {28}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4} >
@@ -408,6 +486,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="zaochno" checked={props.Ind[29]}  color="secondary" />}
                         label="Заочно"
                         znak={props.Ind[29]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {29}
                     />
                 </Grid>
             </Grid>
@@ -425,6 +506,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="moscow" checked={props.Ind[30]} color="secondary" />}
                         label="Москва"
                         znak={props.Ind[30]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {30}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -434,6 +518,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="saint" checked={props.Ind[31]} color="secondary" />}
                         label="Санк-Петербург"
                         znak={props.Ind[31]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {31}
                     />
                 </Grid>
             </Grid>

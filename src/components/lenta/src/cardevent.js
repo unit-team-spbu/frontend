@@ -25,18 +25,21 @@ import  {Link}  from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 280,
-    height: 300,
+    height: 310,
 
   },
   media: {
     height: 240,
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '56.25%',
+     // 16:9
   },
   controls: {
     display: 'flex',
     alignItems: 'center',
     '& > *': {
     marginbottom: theme.spacing(3),
+    //display: block,
+    height: 100,
     }
   },
   buttonsSide: {
@@ -46,6 +49,19 @@ const useStyles = makeStyles((theme) => ({
       alignSelf: "end",
       textAlign: "right"
     }
+  },
+  box: {
+    //widht: 280,
+    height: 70, 
+   // textOverflow: "ellipsis",
+    overflow: "hidden",
+    content:"...",
+   // display: inline-block,
+    //position: absolute,
+    //whiteSpace: 'nowrap',
+    //whiteSpace: 'nowrap',
+  
+    
   },
 }));
 
@@ -60,13 +76,13 @@ const Cardform = reduxForm({form: "card"})((props)=>{
             <CardMedia
               component="img"
               //alt="Contemplative Reptile"
-              height="140"
+              height="170"
               image={props.image_url}
               //title="Contemplative Reptile"
             />
             <CardContent>
               
-              <Typography gutterBottom noWrap variant="h5" component="h2" >
+              <Typography gutterBottom /*noWrap**/  className={classes.box} display="block" variant="h5" component="h2" >
                 {props.title}
               </Typography>
         
@@ -101,18 +117,7 @@ const CardEvent = (props) => {
         /*onSubmit={Submit(props.setCard, localStorage.getItem('token'), props.id)}*//>
 
       <CardActions /*disableSpacing*/>
-      <div  className={classes.controls}>
-        {localStorage.getItem('token') ?
-        <Button color="default" size="medium"   >
-        в избранное
-        </Button> :
-          <Button color="default" size="medium" onClick={() => {alert('Вам необходимо войти на сайт для добавления мероприятия в избранное') }} 
-         >
-            в избранное
-          </Button>
-        }
-      <GradeRoundedIcon color="secondary"/>
-      </div>
+      
       </CardActions>
      
     </Card>

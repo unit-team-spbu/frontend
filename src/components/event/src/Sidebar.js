@@ -102,19 +102,8 @@ const Sidebar = (props) => {
          
         </ListItem>
 
-        
-      
       </List>
-      <div className={classes.buttonsSide}>
-        {
-          localStorage.getItem('token') ? <Button variant="contained" color="secondary">в избранное</Button> :
-          <Button variant="contained" 
-          onClick={() => {alert('Вам необходимо войти на сайт для добавления мероприятия в избранное') }}  
-          color="secondary">Добавить в избранное</Button>
 
-        }
-        
-        </div>
 
       </Paper>  
     </Grid>
