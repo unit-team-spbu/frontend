@@ -19,6 +19,7 @@ import {connect} from 'react-redux';
 import {setAuthorization} from './../reducers/userReducer'
 import {Redirect} from 'react-router-dom'
 import { LinkOffSharp } from '@material-ui/icons';
+import setAuth from './../reducers/userReducer'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -184,7 +185,7 @@ const Submit = (app, currentUser) => (data) => {
           </Typography>
         
 
-          <AuthForm onSubmit={Submit(props.setAuthorization, props.currentUser)}/>
+          <AuthForm onSubmit={Submit(props.setAuthorization, localStorage.getItem('token'))}/>
 
          
           <Grid container className={classes.button}  justify="flex-end">

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import Blog from './Blog';
 import {setLenta} from './../../../reducers/userReducer'
@@ -7,7 +6,7 @@ import {setLenta} from './../../../reducers/userReducer'
 class lenta extends React.Component{
 
   componentDidMount(){
-    this.props.setLenta(this.props.currentUser, false);
+    this.props.setLenta(localStorage.getItem('token'), false);
   }
   render(){
   return (

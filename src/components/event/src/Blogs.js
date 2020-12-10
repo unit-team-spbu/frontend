@@ -3,6 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Headers from './Headers';
 import Event from './Event';
+import { connect } from 'react-redux';
 
 const sections = [
   { title: 'Конференции', url: '#' },
@@ -14,6 +15,8 @@ const sections = [
   { title: 'Семинары', url: '#' },
   { title: 'Лекции', url: '#' },  
 ];
+
+const Blog=(props)=>{
 
 const event = {
     title: "Directum Day 2020",
@@ -27,8 +30,7 @@ const event = {
     time: "9:30"
 };
 
-export default function Blogs() {
-
+    //props.LK=false;
   return (
     <React.Fragment>
       <CssBaseline />
@@ -40,4 +42,13 @@ export default function Blogs() {
       </Container>
     </React.Fragment>
   );
+  
 }
+const mapcardStateProps = (state) => ({
+  isLog: state.user.isLog,
+  message: state.user.message,
+  currentUser: state.user.currentUser,
+  Card: state.user.Card,
+})
+
+export default connect(mapcardStateProps, {})(Blog)

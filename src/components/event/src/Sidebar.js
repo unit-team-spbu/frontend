@@ -84,21 +84,21 @@ const Sidebar = (props) => {
           <ListItemIcon>
             <RoomOutlinedIcon />
           </ListItemIcon>
-          { props.Card.tags[0]===('online') ? 
+          { props.Card.tags ? props.Card.tags[0]===('online') ? 
           <ListItemText primary="Место" secondary={props.Card.tags[0]} />
           :
           <ListItemText primary="Место" secondary={props.Card.location} /> 
-          }
+          : null}
           </ListItem> 
         <ListItem >
           <ListItemIcon>
             <MonetizationOnOutlinedIcon />
           </ListItemIcon>
-          { props.Card.tags[2]===('paid') ? 
+          { props.Card.tags ? props.Card.tags[2]===('paid') ? 
           <ListItemText primary="Стоимость" secondary="Paid" />
           :
           <ListItemText primary="Стоимость" secondary="Free" /> 
-          }
+          : 0}
          
         </ListItem>
 
@@ -107,7 +107,7 @@ const Sidebar = (props) => {
       </List>
       <div className={classes.buttonsSide}>
         {
-          props.currentUser.length>3 ? <Button variant="contained" color="secondary">в избранное</Button> :
+          localStorage.getItem('token') ? <Button variant="contained" color="secondary">в избранное</Button> :
           <Button variant="contained" 
           onClick={() => {alert('Вам необходимо войти на сайт для добавления мероприятия в избранное') }}  
           color="secondary">Добавить в избранное</Button>
@@ -127,7 +127,7 @@ const mapbarStateProps = (state) => ({
   interests: state.user.interests,
   lenta: state.user.lenta,
   iscard: state.user.iscard,
-  Card:  state.user.Card
+  Card:  state.user.Card,
 })
 
 export default connect(mapbarStateProps, {})(Sidebar)

@@ -27,7 +27,7 @@ const Event= (props) => {
 //let posts = props.Card.description;
   return (
     <React.Fragment>
-      <MainFeaturedPost title={props.Card.title} image_url={"https://source.unsplash.com/random/?programming,it,"+props.Card.title}  />
+      <MainFeaturedPost title={props.Card.title} id={props.Card._id} image_url={"https://source.unsplash.com/random/?programming,it,"+props.Card.title}  />
 
       <Grid container spacing={5} className={classes.mainGrid}>
           <Grid item xs={12} md={8}>
@@ -36,7 +36,7 @@ const Event= (props) => {
                 {props.Card.description}
               </Typography>
         </Grid>
-       <Sidebar date={props.Card.startDate}  where={props.Card.tags[0]} price={props.Card.tags[2]} /> 
+       <Sidebar date={props.Card.startDate}  where={props.Card.tags} price={props.Card.tags} /> 
         
       </Grid>
     </React.Fragment>
@@ -50,7 +50,7 @@ const mapStateProps = (state) => ({
   interests: state.user.interests,
   lenta: state.user.lenta,
   iscard: state.user.iscard,
-  Card:  state.user.Card
+  Card:  state.user.Card,
 })
 
 export default connect(mapStateProps, {})(Event)

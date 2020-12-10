@@ -37,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
 const ButtonLK = reduxForm({form: "lk"})((props)=>{
   const classes = useStyles();
   return(
-    <form  onSubmit={props.handleSubmit}>
-    <Button variant="outlined" color="default" type="submit" className={classes.button} size="medium" >
+    <form  >
+    <Button variant="outlined" component={Link} to="/Anketa" color="default"  className={classes.button} size="medium" >
           Личный кабинет   
     </Button>
   </form>
@@ -48,8 +48,8 @@ const ButtonLK = reduxForm({form: "lk"})((props)=>{
 const ButtonEvent = reduxForm({form: "event"})((props)=>{
   const classes = useStyles();
   return(
-    <form  onSubmit={props.handleSubmit}>
-    <Button size="medium"   color="default" type="submit"> 
+    <form  >
+    <Button size="medium"  component={Link} to="/lenta" color="default" type="submit"> 
           <Typography
        
             component="h2"
@@ -69,15 +69,10 @@ const Headers = (props) => {
   const classes = useStyles();
   
     const SubmitButtonLK = (app) => (data) => {
-    app(false, props.currentUser)}
+    app(false, localStorage.getItem('token'))}
 
     const SubmitButtonEvent = (app) => (data) => {
-      if (props.currentUser.length>3){
-        app(true, props.currentUser)
-      }
-      else {
-      app(true, '')
-      }
+        app(true, localStorage.getItem('token'))
     }
 
     if (props.LK){
@@ -89,12 +84,12 @@ const Headers = (props) => {
       debugger
       return <Redirect to="/lenta"/>
     }
-    
+    debugger
     return (
       <React.Fragment>
         <Toolbar className={classes.toolbar}>
 
-        <ButtonEvent onSubmit={SubmitButtonEvent(props.setlk)} />
+        <ButtonEvent /*onSubmit={SubmitButtonEvent(props.setlk)}*/ />
         
           <Typography
             component="h2"
@@ -108,7 +103,7 @@ const Headers = (props) => {
           </Typography>
         
         {
-          props.isLog ? <ButtonLK onSubmit={SubmitButtonLK(props.setlk)}/> : 
+          localStorage.getItem('token') ? <ButtonLK /*onSubmit={SubmitButtonLK(props.setlk)}*//> : 
           <Button variant="outlined" color="default" size="medium" className={classes.button}  component={Link} to="/welcome">
           Войти
           </Button>

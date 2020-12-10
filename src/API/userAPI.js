@@ -15,10 +15,10 @@ export const loginAPI = (login, password) => {
 
 export const lentaAPI = (token, tags) => {
     
-    if(token.length>4 && tags[0]){
+    if(token && tags[0]){
     return ms.post("/feed/", {token, tags}).then(res=>res.data)
     }
-    else if (token.length>4){
+    else if (token){
         return ms.post("/feed/", {token}).then(res=>res.data)
     }
     else if (tags[0]){
@@ -41,7 +41,7 @@ export const AnketaGet = (token) => {
 }
 
 export const CardGet = (token, id) => {
-    if (token.length>3) {return ms.get("feed/"+id+"/", {params: {token}}).then(res=>res.data) }
+    if (token) {return ms.get("feed/"+id+"/", {params: {token}}).then(res=>res.data) }
     else 
     return ms.get("feed/"+id+"/", {}).then(res=>res.data)
 }

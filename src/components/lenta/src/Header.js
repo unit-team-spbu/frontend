@@ -37,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
 const ButtonLK = reduxForm({form: "lk"})((props)=>{
   const classes = useStyles();
   return(
-    <form  onSubmit={props.handleSubmit}>
-    <Button variant="outlined" color="default" type="submit" className={classes.button} size="medium" >
+    <form >
+    <Button variant="outlined" component={Link} to="/Anketa" color="default"  className={classes.button} size="medium" >
           Личный кабинет   
     </Button>
   </form>
@@ -49,13 +49,13 @@ const Header = (props) => {
   const classes = useStyles();
   
     const SubmitButtonLK = (app) => (data) => {
-      app(false, props.currentUser)}
+      app(false, localStorage.getItem('token'))}
 
-    if (props.LK){
+    /*if (props.LK){
         debugger
         //props.LK=false;
         return <Redirect to="/Anketa"/>
-    }
+    }*/
     debugger
     return (
       <React.Fragment>
@@ -86,7 +86,7 @@ const Header = (props) => {
           
         
         {
-          props.isLog ? <ButtonLK onSubmit={SubmitButtonLK(props.setlk)}/> : 
+          localStorage.getItem('token') ? <ButtonLK /*onSubmit={SubmitButtonLK(props.setlk)}*//> : 
           <Button variant="outlined" color="default" align="right" size="medium"   className={classes.button} component={Link} to="/welcome">
           Войти
           </Button>

@@ -21,9 +21,10 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import { Field, reduxForm } from 'redux-form';
 import {connect} from 'react-redux';
-import {Anketa} from './../reducers/userReducer'
+import {Anketa, changeInd} from './../reducers/userReducer'
 import {Redirect} from 'react-router-dom'
 import DeleteIcon from '@material-ui/icons/Delete';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
    toolbar: {
@@ -71,13 +72,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));  
 
-const renderCheckbox = ({ input, label, znak }) => (
+const renderCheckbox = ({ input, label, znak, ind, changeInd, indexes }) => (
   <div>
   <FormControlLabel
     control={
       <Checkbox
-        checked={znak ? true : input.value}
-        onChange={ input.onChange }
+        checked={znak ? true : false}
+        onChange={ () => {
+          
+          changeInd(ind, indexes)} }
       />
     }
     label={label}
@@ -106,6 +109,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox checked={props.Ind[0]} value={props.Ind[0]} color="secondary" />}
                         label="WEB" 
                         znak={props.Ind[0]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {0}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -115,6 +121,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox checked={props.Ind[1]} value="GD" color="secondary" />}
                         label="Gamedev"
                         znak={props.Ind[1]}
+                        indexes = {props.Ind}
+                        changeInd = {props.changeInd}
+                        ind = {1}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -124,6 +133,9 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                         control={<Checkbox value="mobile" checked={props.Ind[2]} color="secondary" />}
                         label="Мобильная разработка"
                         znak={props.Ind[2]}
+                        changeInd = {props.changeInd}
+                        indexes = {props.Ind}
+                        ind = {2}
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -426,41 +438,7 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
                 </Grid>
             </Grid>
        
-            <Grid container spacing={0}>
-                <Grid item xs={12} sm={12}>
-                    <Typography  align="left" component="h1" variant="h6" >
-                        6) Интересует ли вас что-то новое?
-                    </Typography>         
-                </Grid>
-                <Grid item xs={12} sm={4}>
-                    <Field  component={renderCheckbox}
-                        name={"Yes"}
-                        id="Yes"
-                        control={<Checkbox value="yes" checked={props.Ind[32]} color="secondary" />}
-                        label="Да"
-                        znak={props.Ind[32]}
-                    />
-                </Grid>
-                <Grid item xs={12} sm={4}>
-                    <Field  component={renderCheckbox}
-                        name={"No"}
-                        id="No"
-                        control={<Checkbox value="no" checked={props.Ind[33]} color="secondary" />}
-                        label="Нет"
-                        znak={props.Ind[33]}
-                    />
-                </Grid>    
-                <Grid item xs={12} sm={4}>
-                    <Field  component={renderCheckbox}
-                        name={"YN"}
-                        id="YN"
-                        control={<Checkbox value="fz" checked={props.Ind[34]} color="secondary" />}
-                        label="Затрудняюсь ответить"
-                        znak={props.Ind[34]}
-                    />
-                </Grid>
-            </Grid>
-    
+           
             <Grid  className={classes.paper}  alignItems="center" justify="center">
                     <Button
                     id="save"
@@ -493,7 +471,7 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
         const classes = useStyles();
         return(
           <form  onSubmit={props.handleSubmit}>
-              <Button  id="save"
+              <Button  id="save"  
                     variant="contained"
                     type="submit"
                     //color="primary"
@@ -509,8 +487,8 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
 
       const ButtonExitEvent = reduxForm({form: "exit"})((props)=>{
         return(
-          <form  onSubmit={props.handleSubmit}>
-          <Button size="medium" color="default" id="itEvent"  name="itEvent" type="submit"  >
+          <form  >
+          <Button size="medium" color="default" id="itEvent" component={Link} to="/lenta" name="itEvent" type="submit"  >
           <Typography
             component="h2"
             variant="h5"
@@ -764,27 +742,6 @@ const AnketaForm = reduxForm({form: "anketa"})((props)=>{
         else
           inds.push(false); 
     
-          
-        if (data.Yes===true || tags[32]){
-          inter.push('Yes')
-          inds.push(true);
-        }
-        else
-          inds.push(false); 
-    
-        if (data.No===true || tags[33]){
-          inter.push('No')
-          inds.push(true);
-        }
-        else
-          inds.push(false); 
-    
-        if (data.YN===true || tags[34]){
-          inter.push('YN')
-          inds.push(true);
-        }
-        else
-          inds.push(false); 
     
           
         app(currentUser, inter, inds, Post,false, Get)
@@ -795,16 +752,16 @@ const AnketaProps = (props) => {
 
 
   const SubmitButton = (app) => (data) => {
-    app(props.currentUser,[] ,[], false, true, false)
+    app(localStorage.getItem('token'),[] ,[], false, true, false)
     debugger
   }
 
   const SubmitButtonEvent = (app) => (data) => {
-    app(props.currentUser,[],[], false, false,false, true)
+    app(localStorage.getItem('token'),[],[], false, false,false, true)
     
   }
   const SubmitButtonClear = (app) => (data) => {
-    app(props.currentUser,[],[], false, false,false,false,true)
+    app(localStorage.getItem('token'),[],[], false, false,false,false,true)
     
   }
   
@@ -818,7 +775,51 @@ const AnketaProps = (props) => {
   if (props.Ind[35]){
     debugger
     props.Ind[35]=false;
-    return <Redirect to="/Anketa"/>
+    return (
+
+      <React.Fragment>
+
+      <Toolbar className={classes.toolbar}>
+
+      <ButtonExitEvent onSubmit={SubmitButtonEvent(props.Anketa)}/>
+
+      <Typography
+        component="h2"
+        variant="h5"
+        color="inherit"
+        align="right"
+        noWrap
+        className={classes.toolbarTitle}
+      >
+      
+      </Typography>
+
+      <ButtonExit onSubmit={SubmitButton(props.Anketa)}/>
+
+      </Toolbar>
+   
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Анкета регистрации
+        </Typography>
+       
+        <AnketaForm Ind={props.Ind} changeInd = {props.changeInd} onSubmit={Submit( props.Anketa, localStorage.getItem('token'), props.isPost, props.isGet, props.Ind)}/>
+        <ButtonClear onSubmit={SubmitButtonClear(props.Anketa)}/>
+
+       
+      </div>
+      <Box mt={5}>
+        <Copyright />
+      </Box>
+    </Container>
+    </React.Fragment> 
+  );
+//return <Redirect to="/Anketa"/>
     
   }
 
@@ -856,7 +857,7 @@ const AnketaProps = (props) => {
           Анкета регистрации
         </Typography>
        
-        <AnketaForm Ind={props.Ind} onSubmit={Submit(props.Anketa, props.currentUser, props.isPost, props.isGet, props.Ind)}/>
+        <AnketaForm Ind={props.Ind}  changeInd = {props.changeInd} onSubmit={Submit(props.Anketa, localStorage.getItem('token'), props.isPost, props.isGet, props.Ind)}/>
         <ButtonClear onSubmit={SubmitButtonClear(props.Anketa)}/>
 
        
@@ -880,4 +881,4 @@ const mapAnketaStateProps = (state) => ({
     Ind: state.user.Ind
   })
   
-  export default connect(mapAnketaStateProps, {Anketa})(AnketaProps)
+  export default connect(mapAnketaStateProps, {Anketa, changeInd})(AnketaProps)

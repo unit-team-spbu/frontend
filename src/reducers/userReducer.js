@@ -144,22 +144,28 @@ export const setRegistration = (login, password) => dispatch => {
         dispatch(setAuth(true))
         //alert(res.message) 
         debugger
+        dispatch(setAuth(false))
     }, err=>{
         debugger
         dispatch(setMessage(err.toString()))
         alert(err.response.data.message)
     });
+    debugger
+    dispatch(setAuth(false))
 }
 
 export const setAuthorization = (login,password,token) => dispatch => {
 
      loginAPI(login, password).then(res=>{
+        localStorage.setItem('token',res.token)
         dispatch(setToken(res.token))
         dispatch(setExit(false))
         dispatch(setEvent(false))
         dispatch(setLog(true))
+        localStorage.setItem('log',true)
+        debugger
 
-        AnketaGet(res.token).then(res=>{
+        /*AnketaGet(res.token).then(res=>{
             if (res.ind){
               dispatch(setGet(true))
               dispatch(setInd(res.ind))
@@ -174,7 +180,7 @@ export const setAuthorization = (login,password,token) => dispatch => {
             dispatch(setMessage(err.toString()))
             //alert(err.response.data.message)
         });
-        debugger
+        debugger*/
     }, err=>{
         debugger
         dispatch(setMessage(err.toString()))
@@ -192,7 +198,7 @@ export const setLenta = (token, list) => dispatch => {
         dispatch(setLK(false))
         dispatch(setEvent(false))
         dispatch(isCard(false))
-        dispatch(isEv(true))
+        //dispatch(isEv(true))
         
         //alert("Ok")
         debugger
@@ -202,43 +208,37 @@ export const setLenta = (token, list) => dispatch => {
         alert(err.toString())
     });
 }
-    
+
+export const changeInd = (id, indexes) => dispatch => {
+    let newIndexes = indexes.slice();
+    newIndexes[id] = !newIndexes[id];
+    dispatch(setInd(newIndexes));
+}
+
 export const Anketa = (token, interests,inds, post, exit, get, Event,clear) => dispatch => {
 
     if (Event){
-        lentaAPI(token, false).then(res=>{
-            dispatch(setlenta(res))
-            dispatch(setLK(false))  
-            dispatch(isCard(false)) 
-            dispatch(isEv(false)) 
-            dispatch(setEvent(true))
-            debugger
-        }, err=>{
-            debugger
-            dispatch(setMessage(err.toString()))
-            alert(err.toString())
-        });
+        dispatch(setLK(false))  
+        dispatch(isCard(false)) 
+        dispatch(isEv(false)) 
+        //dispatch(setEvent(true))
     }
     
     else 
         if (exit){
-            lentaAPI('',false).then(res=>{debugger
-                dispatch(setlenta(res))
-                dispatch(setPost(false))
-                dispatch(setGet(false))
-                dispatch(setToken(""))
-                dispatch(setLog(false))
-                dispatch(setLK(false))
-                dispatch(isEv(false))
-                dispatch(setEvent(false))
-                dispatch(setExit(true))
-                alert("Вы вышли") 
-                
-            }, err=>{
-                debugger
-                dispatch(setMessage(err.toString()))
-                alert(err.toString())
-            });
+            localStorage.removeItem('token')
+            //dispatch(setPost(false))
+            dispatch(setGet(false))
+            dispatch(setInd([false,false,false,false,false,false,false,false,false,false,false,false,
+                false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
+                false,false,false,false,false,false,false,false]))
+            dispatch(setToken(""))
+            dispatch(setLog(false))
+            dispatch(setLK(false))
+            dispatch(isEv(false))
+            dispatch(setEvent(false))
+            dispatch(setExit(true))
+            alert("Вы вышли") 
         }
 
         else 
@@ -255,18 +255,14 @@ export const Anketa = (token, interests,inds, post, exit, get, Event,clear) => d
                 });
             }
             else if (clear) {
-                AnketaGet(token).then(res=>{
+               debugger
                 dispatch(setInd([false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false,false,false,false,false,false,true]))
+                    false,false,false,false,false,false,false,false]))
                 dispatch(setExit(false))
                 dispatch(setEvent(false))
-                debugger
-            }, err=>{
-                debugger
-                dispatch(setMessage(err.toString()))
-                alert(err.toString())
-            });      
+               
+               
             }
                  else {
                         AnketaPost(token, interests, inds).then(res=>{
@@ -274,10 +270,12 @@ export const Anketa = (token, interests,inds, post, exit, get, Event,clear) => d
                                 dispatch(setPost(true))
                                 dispatch(setExit(false))
                                 dispatch(setEvent(false))
+                                localStorage.setItem('log',false);
                                 alert("Ваша анкета сохранена")
                             }, err=>{
                                 debugger
                                 dispatch(setMessage(err.toString()))
+                                //if (err.response.data.message
                                 alert(err.response.data.message)
                             });
                         }
@@ -290,7 +288,7 @@ export const setlk = (event, token) => dispatch => {
             dispatch(setLK(false))
             dispatch(setEvent(false))
             dispatch(isCard(false))
-            dispatch(isEv(true))
+            //dispatch(isEv(true))
             
             //alert("Ok")
             debugger
@@ -310,23 +308,26 @@ export const setlk = (event, token) => dispatch => {
             dispatch(setEvent(false))
             dispatch(isEv(false))
             dispatch(isCard(false))
-            dispatch(setLK(true))
+            //dispatch(setLK(true))
             debugger
         }, err=>{
             debugger
+            //console.log(err);
             dispatch(setMessage(err.toString()))
-            alert(err.toString())
+            //alert(err.toString())
         });
     }
+    
 }
 
-export const setCard = (token, id) => dispatch => {
-    CardGet(token, id).then(res=>{
-        dispatch(setcard(res))
+export const setCard = (token, id) =>  dispatch => {
+      CardGet(token, id).then(res=>{ 
+        //dispatch(isCard(false))
+         dispatch(setcard(res))  
+         dispatch(isCard(true))
+         //localStorage.setItem('iscard',true)
         dispatch(setEvent(false))
         dispatch(isEv(false))
-        dispatch(isCard(true))
-        
         debugger
     }, err=>{
         debugger

@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom
 
 import Login from './Login';
 import SignUp from './Signup';
-import Anketa from './Anketa';
+import anketa from './Anketaf';
 import lenta from './lenta/src/index';
 import event from './event/src/index';
 
@@ -14,7 +14,8 @@ function App() {
       <Switch>
         <Route path='/welcome' component={Login}/>
         <Route path='/Signup' component={SignUp} />
-        <Route path='/Anketa' component={Anketa} />
+        <Route path='/Anketa' component={anketa} />
+        
 
         <Route path='/lenta' component={lenta} />
         <Route path='/event' component={event} />

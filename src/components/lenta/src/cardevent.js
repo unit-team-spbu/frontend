@@ -20,6 +20,7 @@ import { connect } from 'react-redux';
 import {setCard} from './../../../reducers/userReducer'
 import { Redirect } from 'react-router-dom';
 import { Grid, Hidden } from '@material-ui/core';
+import  {Link}  from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,9 +54,9 @@ const Cardform = reduxForm({form: "card"})((props)=>{
 
 
   return(
-      <form className={classes.form} onSubmit={props.handleSubmit}>
+      <form className={classes.form} >
 
-        <CardActionArea type="submit" >
+        <CardActionArea  component={Link} to={"/event/"+props.id} >
             <CardMedia
               component="img"
               //alt="Contemplative Reptile"
@@ -88,25 +89,20 @@ const Cardform = reduxForm({form: "card"})((props)=>{
 
 const CardEvent = (props) => {
   const classes = useStyles();
-
-  
-
-  if (props.iscard){
-    return <Redirect to="/event"/>
-  }
  
-debugger
+
   return (
     <Card className={classes.root}>
 
       <Cardform short_info={props.short_info} 
        image_url={props.image_url} 
        title={props.title} 
-        onSubmit={Submit(props.setCard, props.currentUser, props.id)}/>
+       id={props.id}
+        /*onSubmit={Submit(props.setCard, localStorage.getItem('token'), props.id)}*//>
 
       <CardActions /*disableSpacing*/>
       <div  className={classes.controls}>
-        {props.currentUser.length>3 ?
+        {localStorage.getItem('token') ?
         <Button color="default" size="medium"   >
         в избранное
         </Button> :
@@ -129,6 +125,7 @@ const mapCardStateProps = (state) => ({
   interests: state.user.interests,
   lenta: state.user.lenta,
   iscard: state.user.iscard,
+  Card: state.user.Card,
 })
 
 export default connect(mapCardStateProps, {setCard})(CardEvent)

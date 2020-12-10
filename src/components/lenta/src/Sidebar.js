@@ -259,7 +259,7 @@ const  Sidebar = (props) => {
       list.push('конференция')
 
       
-    app(props.currentUser, list)
+    app(localStorage.getItem('token'), list)
   }
 
   return(

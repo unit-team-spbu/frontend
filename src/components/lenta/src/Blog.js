@@ -140,4 +140,4 @@ const mapcardStateProps = (state) => ({
   currentUser: state.user.currentUser
 })
 
-export default connect(mapcardStateProps, {setLenta})(Blog)
+export default connect(mapcardStateProps, {})(Blog)
